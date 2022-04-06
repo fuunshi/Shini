@@ -2,37 +2,43 @@
 <html>
     <head>
         <title>
-                Shini
+            Shini
         </title>
+
+        <!--meta Decleration-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Pranil dada ko website">
 
         <!--CSS library-->
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body class="body">
-        <header class="bold">Shini</header>
+    <body>
+        <nav>
+            <ul class="navbar">
+                <li class="navlinks float-left"><a class="navpad active navlinks" href="#home">Home</a> </li>
+                <li class="navlinks float-left"><a class="navpad navlinks" href="#contact">Contact</a></li>
+                <li class="navlinks float-right"><a class="navpad navlinks" href="#about">About</a></li>
+            </ul>
+        </nav>
         <div>
-            <div class="column1">
-                <img src="img/cat.jpg"
+            <div class="container" id="home">
+                <div style="float:left; font-size: 3em;">Hello!</div>
+                <div style="float:right; font-size:3em;">Welcome!</div>
+                <img class="bg" src="img/lion.png">
+                <div class="centered centered-color-azure">
+                    "If you don't eat the lion, don't expect the lion to not eat you"
+                </div>
             </div>
-            <div class="column2">
-                Hello my name is Pranil Shrestha
-            </div>
-        </div>
-        <div>
-            <a href="https://www.instagram.com/linarp_stha" class="icon_image"><img class="icon" src="img/insta.jpg"></a>
-        </div>
-            <a href="https://is.gd/oZYAcc" class="icon_image"><img src="img/youtube.jpg" class="icon"></a>
         </div>
         <br>
         <br>
         <br>
-        <br>
-        <div style="color:azure;">
-            This is my introduction. I live in Nepal. I was born in Nepal.
-            I used to be a kid. Now im not a kid anymore. I know how to read
-            english letters and i remember it all in my brain. I know numbers from
-            1 to 9012 only more than that i cannot count. I am very proud of myself.
+        <div class="container inline" id="contact">
+            <a href="discord.com/app"><img class="icon" src="img/discord.png"></a>
+            <a href="https://www.instagram.com/linarp_stha"><img class="icon" alt="Insta"></a>
+            <a href="m.me/LinarpStha"><img class="icon" alt="Messenger"></a>
+            <a href="https://www.twitter.com/LinarpShrestha"><img class="icon" src="img/twitter.png"></a>
         </div>
-        <footer class="bold" style="float:bottom;">© Shini 2022</footer>
     </body>
 </html>
