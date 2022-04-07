@@ -74,3 +74,9 @@ i:last-child {
     width: 50px;
     height: 50px;
 }
+.midcolumn{
+    width: 50%;
+}
+.sidecolumn{
+    width: 25%;
+}
