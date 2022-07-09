@@ -105,7 +105,7 @@ i:last-child {
     width: 50%;
 }
 .boxx{
-    width: 70%;
+    width: 400px;
     height: auto;
     background-color: rgba(128, 128, 128, 0.514);
     box-shadow: 3px 3px rgb(94, 90, 90);
