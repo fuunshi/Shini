@@ -1,57 +1,79 @@
-html, body {
-    min-height:100%;
-    max-height:100%;
+html,
+body {
+    min-height: 100%;
+    max-height: 100%;
     margin: 0;
-    height:100%;
-    font-family:Oswald, sans-serif, Arial;
-    font-size:14px;
-    background:#fff
-  }
-.inline{
+    height: 100%;
+    font-family: Oswald, sans-serif, Arial;
+    font-size: 14px;
+    background: #fff
+}
+
+main {
+    height: calc(100vh - 60px);
+    width: 100%;
+    background-image: url('../img/apple.jpg');;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inline {
     display: inline;
 }
-.navbar{
+
+.navbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.37);
 }
-.navlinks{
+
+.navlinks {
     display: block;
     color: rgb(0, 0, 0);
     text-align: center;
     text-decoration: none;
     margin-top: 0;
 }
-.navpad{
+
+.navpad {
     padding: 14px 10px;
 }
-.navpad1{
+
+.navpad1 {
     padding: 17px 0px 10px 0px;
     font-family: cursive;
     font-size: 0.5cm;
 }
-.float-left{
+
+.float-left {
     float: left;
 }
-.float-right{
+
+.float-right {
     float: right;
 }
-.active{
+
+.active {
     background-color: transparent;
 }
+
 li a:hover:not(.active) {
     background-color: rgba(0, 212, 240, 0.089);
-  }
+}
+
 li a:hover {
     background-color: rgba(6, 134, 134, 0.164);
 }
-  
+
 i:last-child {
     border-right: none;
 }
-.bg{
+
+.bg {
     width: 50%;
     opacity: 0.5;
     display: block;
@@ -60,55 +82,74 @@ i:last-child {
     margin-top: 3em;
 
 }
-.container{
+
+.container {
     position: relative;
     text-align: center;
 }
-.centered{
+
+.centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
 }
-.centered-color-azure{
+
+.centered-color-azure {
     color: rgb(2, 68, 68);
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
-.icon{
+
+.icon {
     width: 50px;
     height: 50px;
 }
-.midcolumn{
+
+.midcolumn {
     width: 50%;
 }
-.sidecolumn{
+
+.sidecolumn {
     width: 25%;
 }
-.home-icon{
-    padding: 14px ;
+
+.home-icon {
+    padding: 14px;
     width: 25px;
     height: 25px;
     padding-right: 8px;
 }
+
 .sticky {
     position: fixed;
     width: 100%;
-  }
-.front{ 
-    background-repeat:no-repeat; 
-    background-size: cover; 
-    background-attachment: fixed; 
-    height: 100%;
-    
 }
-.column50{
+
+.front {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+
+}
+
+.column50 {
     width: 50%;
 }
-.boxx{
+
+.boxx {
     width: 400px;
     height: auto;
     background-color: rgba(128, 128, 128, 0.514);
     box-shadow: 3px 3px rgb(94, 90, 90);
     padding: 4px;
     border-radius: 5px;
+}
+.blu{
+    font-family: 'Mukta', sans-serif;
+    color:white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
