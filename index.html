@@ -1,71 +1,63 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <title>Shini</title>
-
-    <!--Meta Declaration-->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pranil dada ko website">
+    <title>Pranil Shrestha</title>
 
-    <!--Icon-->
-    <link rel="icon" href="img/Die.png" type="png">
-
-    <!--Library-->
-    <link rel="stylesheet" href="css/nstyle.css">
-
+    <link rel="stylesheet" href="library/style.css">
 </head>
 
 <body>
-    <nav style="position: fixed; width: 100%;">
-        <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: rgba(235, 234, 234, 0); margin-right: 10%;">
-            <style>
-                li {
-                    float: right;
-                }
-
-                li a {
-                    display: block;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
-                    color: black;
-                }
-
-                li a:hover {
-                    background-color: #0505052d;
-                }
-            </style>
-            <li style="float: left; margin-left: 10%; text-decoration: wavy;"><a href="https://www.pranilshrestha.com.np">Pranil Shrestha</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#myworks">Works</a></li>
-            <li><a href="#home">Home</a></li>
-        </ul>
-    </nav>
-
-
-    <!--Main Content-->
-    <div id="home">
-        <div style="background-image: url('img/bgimg.jpg'); background-size: cover; height: calc(100vh);">
-            <div class="leftop">
-                <h1 style="font-family: Arial, Helvetica, sans-serif;">Hi, I am Pranil</h1>
-                <h2 style="font-family: Arial, Helvetica, sans-serif;">Computer Enthusiast</h2>
+    <section id="navbar">
+        <nav class="navMenu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Project</a>
+            <a href="#contact">Contact</a>
+            <div class="dot"></div>
+        </nav>
+    </section>
+    <section id="home">
+        <div class="background">
+            <div class="container">
+                <img class="avatar" src="img/me.jpeg" alt="avatar">
+                <h2>Hi! I am Pranil</h2>
+                <span class="typewriter"></span>
             </div>
         </div>
-    </div>
-
-    <!-- <div id="myworks">
-        <h2 style="text-align: center;">My Works</h2>
-        <hr width="30%">
-        <div class="container" style="padding: 16px;">
-            <div style="margin-left:  5%; width: 40%; float: left;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque placeat deleniti eligendi porro sed delectus fugiat iusto. Incidunt eaque corrupti tempore ipsum, unde mollitia, eligendi cum quis magni vel odit!</div>
-            <div style="margin-right: 5%; width: 40%; float: right;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum sed obcaecati libero mollitia earum hic animi sequi amet. Laborum sequi magnam dolorum? Laborum assumenda dolorem porro autem dolor totam rerum?</div>
+    </section>
+    <section id="about">
+        <div class="about-section">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <h1>About Me</h1>
+                <hr width="30%">
+            </div>
+            <div style="margin: 10px 0px;">
+                <p>I am Pranil Shrestha</p>
+                <br>
+                <p>Learning Backend</p>
+            </div>
         </div>
-    </div> -->
-
-
+    </section>
+    <footer>
+        <section id="contact">
+            <div class="footer">
+                <ul>
+                    <li><a href="https://twitter.com/LinarpStha">Twitter</a></li>
+                    <li><a href="https://codepen.io/">Codepen</a></li>
+                    <li><a href="mailto:pranilshrestha2016@gmail.com">Email</a></li>
+                    <li><a href="https://dribbble.com/">Dribbble</a></li>
+                    <li><a href="https://github.com/shinig0d">Github</a></li>
+                    <li>
+                        <p>👋</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </footer>
 </body>
 
 </html>
