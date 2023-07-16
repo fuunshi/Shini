@@ -6,17 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pranil Shrestha</title>
+
+    <link rel="stylesheet" href="css/particle.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- particles.js container -->
-    <div id="particles-js"></div> 
-    <!-- stats - count particles -->
-    <div class="count-particles"> <span class="js-count-particles">--</span> particles </div>
-    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
-    <!-- stats.js lib -->
-    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <section id="navbar">
+        <nav class="navMenu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Project</a>
+            <a href="#contact">Contact</a>
+            <div class="dot"></div>
+        </nav>
+    </section>
+    <section id="home">
+        <div class="panel" style="display: block;">
+            <div class="container">
+                <img class="avatar" src="img/me.jpeg" alt="avatar">
+                <h2>Hi! I am Pranil</h2>
+                <span class="typewriter"></span>
+            </div>
+        </div>
+
+        <div id="particles-js"></div>
+    </section>
+    <section id="about">
+        <div class="about-section">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <h1>About Me</h1>
+                <hr width="30%">
+            </div>
+            <div style="margin: 10px 0px;">
+                <p>I am Pranil Shrestha</p>
+                <br>
+                <p>Learning Backend</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <section id="contact">
+            <div class="footer">
+                <ul>
+                    <li><a href="https://twitter.com/LinarpStha">Twitter</a></li>
+                    <li><a href="https://codepen.io/">Codepen</a></li>
+                    <li><a href="mailto:pranilshrestha2016@gmail.com">Email</a></li>
+                    <li><a href="https://dribbble.com/">Dribbble</a></li>
+                    <li><a href="https://github.com/shinig0d">Github</a></li>
+                    <li>
+                        <p>👋</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+    <!--Scripts-->
+    <script src="library/particles.js"></script>
+    <script src="library/app.js"></script>
 </body>
 
 </html>
