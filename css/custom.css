@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+}
+
+#home {
+    height: 100%;
+}
+
+.block {
+    position: relative;
+    top: 30%;
+}
