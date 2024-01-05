@@ -3,11 +3,10 @@
 /* ----------------------------------------------- */
 
 /* To load a config file (particles.json) you need to host this demo (MAMP/WAMP/local)... */
-/*
-particlesJS.load('particles-js', 'particles.json', function() {
-  console.log('particles.js loaded - callback');
-});
-*/
+
+// particlesJS.load('particles-js', 'particles.json', function() {
+//   console.log('particles.js loaded - callback');
+// });
 
 /* Otherwise just put the config content (json): */
 
@@ -18,7 +17,7 @@ particlesJS('particles-js',
       "number": {
         "value": 80,
         "density": {
-          "enable": true,
+          "enable": false,
           "value_area": 800
         }
       },
