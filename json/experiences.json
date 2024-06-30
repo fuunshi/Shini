@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Software Developer",
+        "compName": "Tech Solutions Ltd.",
+        "description": [
+            "Developed web applications using Django framework.",
+            "Implemented RESTful APIs for data exchange."
+        ],
+        "from": "January 2020",
+        "to": "Present"
+    },
+    {
+        "title": "Frontend Developer",
+        "compName": "Web Design Co.",
+        "description": [
+            "Designed and developed responsive UI/UX for client projects.",
+            "Implemented animations and transitions using CSS3 and JavaScript."
+        ],
+        "from": "June 2018",
+        "to": "December 2019"
+    },
+    {
+        "title": "Intern",
+        "compName": "Software Solutions Inc.",
+        "description": [
+            "Assisted in developing prototypes and proof-of-concepts.",
+            "Learned about version control using Git and GitHub."
+        ],
+        "from": "January 2017",
+        "to": "May 2017"
+    }
+]
