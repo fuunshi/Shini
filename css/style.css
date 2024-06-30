@@ -1,0 +1,60 @@
+/* Additional styles can be added here */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #1a202c;
+    color: #cbd5e0;
+}
+
+.project-card,
+.experience-card,
+.certification-card {
+    border: 1px solid #2d3748;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover,
+.experience-card:hover,
+.certification-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.experience-card .date {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+
+    /* Styles for screens smaller than 768px */
+    .project-card,
+    .experience-card,
+    .certification-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Styles for screens smaller than 480px */
+    body {
+        font-size: 14px;
+    }
+}
+

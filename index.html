@@ -10,46 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <!-- Internal CSS for additional styles -->
-    <style>
-        /* Additional styles can be added here */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #1a202c;
-            color: #cbd5e0;
-        }
-
-        .project-card,
-        .experience-card,
-        .certification-card {
-            border: 1px solid #2d3748;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover,
-        .experience-card:hover,
-        .certification-card:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .experience-card .date {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            font-size: 0.75rem;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <!-- External CSS for additional styles -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body class="bg-gray-900 text-white">
@@ -57,7 +22,10 @@
     <!-- Navigation bar -->
     <nav class="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-4 bg-gray-800">
         <a href="#main" class="text-2xl font-bold cursor-pointer">Pranil Shrestha</a>
-        <div class="space-x-4">
+        <button id="mobile-menu-button" class="md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div id="nav-links" class="hidden md:flex items-center md:space-x-4">
             <a href="#projects" class="hover:text-gray-400 transition duration-300">Projects</a>
             <a href="#skills" class="hover:text-gray-400 transition duration-300">Skills</a>
             <a href="#experiences" class="hover:text-gray-400 transition duration-300">Experience</a>
@@ -72,16 +40,24 @@
     <!-- Main section -->
     <section id="main" class="min-h-screen flex flex-col items-center justify-center text-center">
         <h1 class="text-3xl md:text-6xl mb-4">Pranil Shrestha</h1>
-        <p class="text-lg mb-8">Software Developer</p>
+        <p class="text-lg md:text-xl mb-8">Software Developer</p>
         <div class="mb-4">
             <!-- Social media links -->
-            <div class="mb-4 text-3xl md:text-6xl relative z-[1]">
-                <a href="https://www.github.com/fuunshi" class="text-blue-500 hover:text-blue-400 transition duration-300"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/linarp_stha" class="text-pink-500 hover:text-pink-400 transition duration-300"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/pranil-shrestha" class="text-blue-700 hover:text-blue-600 transition duration-300"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:mail@pranilshrestha.com.np" class="text-gray-400 hover:text-white transition duration-300"><i class="far fa-envelope"></i></a>
+            <div class="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-6xl relative z-[1]">
+                <a href="https://www.github.com/fuunshi"
+                    class="text-blue-500 hover:text-blue-400 transition duration-300"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/linarp_stha"
+                    class="text-pink-500 hover:text-pink-400 transition duration-300"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/pranil-shrestha"
+                    class="text-blue-700 hover:text-blue-600 transition duration-300"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="mailto:mail@pranilshrestha.com.np"
+                    class="text-gray-400 hover:text-white transition duration-300"><i class="far fa-envelope"></i></a>
             </div>
-            <a href="#projects" class="bg-gray-800 text-white px-6 py-3 rounded-full text-lg hover:bg-gray-700 transition duration-300">Checkout my Projects</a>
+            <a href="#projects"
+                class="bg-gray-800 text-white px-6 py-3 rounded-full text-lg hover:bg-gray-700 transition duration-300">Checkout
+                my Projects</a>
         </div>
         <a href="#projects" class="text-gray-400 hover:text-white transition duration-300 animate-bounce">
             <i class="fas fa-chevron-down text-2xl"></i>
@@ -139,6 +115,13 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- External JavaScript -->
     <script src="./library/app.js"></script>
+
+    <!-- Nav Script -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('nav-links').classList.toggle('hidden');
+        });
+    </script>
 
 </body>
 
