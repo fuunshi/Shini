@@ -1,7 +1,7 @@
 [
     {
-        "imgURL":"NONEFORNOW.png",
+        "imgURL":"./assets/certifications/HackerRankBasicProblemSolving.png",
         "title":"Hacker Rank",
-        "desc": "Yo esto tyo testo"
+        "desc": "Basic Problem Solving"
     }
 ]

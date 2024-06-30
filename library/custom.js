@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.length > 0) {
                 data.forEach(skill => {
                     const skillImg = document.createElement('img');
+                    skillImg.classList.add('h-24', 'w-24')
                     skillImg.src = skill.url;
                     skillImg.alt = skill.name;
-                    skillImg.classList.add('skill-icon'); // Optional: Add a class for styling
 
                     skillsContainer.appendChild(skillImg);
                 });

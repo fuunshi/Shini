@@ -1,15 +1,17 @@
 [
     {
-      "title": "Project Title 1",
-      "description": "Summary description of Project 1.",
-      "codeLink": "#",
-      "demoLink": "#"
+      "image":"./assets/projects/ArtOurs.png",
+      "title": "ArtOurs",
+      "description": "Art Buying and Selling Site made Using Django",
+      "codeLink": "https://github.com/fuunshi/ArtOurs",
+      "demoLink": "https://fuunshi.pythonanywhere.com"
     },
     {
-      "title": "Project Title 2",
-      "description": "Summary description of Project 2.",
-      "codeLink": "#",
-      "demoLink": "#"
+      "image":"./assets/projects/ScrapeData.png",
+      "title": "Share Sansar Data Scrape",
+      "description": "Daily Scrapping of data at set time using Scrapy and Github Actions",
+      "codeLink": "https://github.com/fuunshi/ShareSansarDataScrape",
+      "demoLink": "https://github.com/fuunshi/ShareSansarDataScrape"
     }
   ]
   
