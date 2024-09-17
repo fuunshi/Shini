@@ -34,6 +34,18 @@
     {
         "name": "postgresql",
         "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain-wordmark.svg"
+    },
+    {
+        "name": "Node.js",
+        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+    },
+    {
+        "name": "express",
+        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
+    },
+    {
+        "name": "django-channels",
+        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
     }
 
 ]
