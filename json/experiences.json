@@ -1,32 +1,42 @@
 [
-    {
-        "title": "Junior Developer",
-        "compName": "Enigma DTS",
-        "description": [
-            "→ Contributing to team using Go and React",
-            "→ Improved performance of the application by 20% by optimizing react components",
-            "→ Followed Agile methodology for project management"
-        ],
-        "from": "Feb 2024",
-        "to": "present"
-    },
-    {
-        "title": "Django Intern",
-        "compName": "Yuwasoft",
-        "description": [
-            "→ Lead a team and developed a smart accounting using Django",
-            "→ Configured Docker to containerize the application to build and test application quickly"
-        ],
-        "from": "July 2024",
-        "to": "present"
-    },
-    {
-        "title": "Freelancer",
-        "compName": "Freelancer",
-        "description": [
-            "→ Developed a website for a local business using Django"
-        ],
-        "from": "Jan 2023",
-        "to": "present"
-    }
+  {
+    "title": "Junior Backend Developer",
+    "compName": "Geek Tech Solutions",
+    "description": [
+      "→ Developed a scalable POS cafe project in Nodejs, Express",
+      "→ Maintained and refactored code in older codebase",
+      "→ Implmeneted Real time chating system using redis and websocket"
+    ],
+    "from": "Dec 2024",
+    "to": "present"
+  },
+  {
+    "title": "Full Stack Developer",
+    "compName": "Yuwasoft",
+    "description": [
+      "→ Lead a team and developed a smart accounting using Django",
+      "→ Configured Docker to containerize the application to build and test application quickly",
+      "→ Refactored Code to MERN Stack for better support"
+    ],
+    "from": "Sept 2023",
+    "to": "Dec 2024"
+  },
+  {
+    "title": "Junior Developer",
+    "compName": "Enigma DTS",
+    "description": [
+      "→ Contributing to team using Go and React",
+      "→ Improved performance of the application by 20% by optimizing react components",
+      "→ Followed Agile methodology for project management"
+    ],
+    "from": "Jan 2024",
+    "to": "July 2024"
+  },
+  {
+    "title": "Freelancer",
+    "compName": "Freelancer",
+    "description": ["→ Developed a website for a local business using Django"],
+    "from": "Jan 2023",
+    "to": "present"
+  }
 ]
