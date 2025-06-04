@@ -6,6 +6,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Skills Carousel functionality
+    let currentSkillsPage = 0;
+    const skillsPerPage = 6;
+    let totalPages = 0;
+
+    function updateSkillsCarousel() {
+        const track = document.querySelector('.skills-track');
+        if (!track) return;
+        
+        const offset = -currentSkillsPage * (100 / Math.ceil(totalPages));
+        track.style.transform = `translateX(${offset}%)`;
+    }
+
+    document.querySelector('.carousel-button.prev')?.addEventListener('click', () => {
+        if (currentSkillsPage > 0) {
+            currentSkillsPage--;
+            updateSkillsCarousel();
+        }
+    });
+
+    document.querySelector('.carousel-button.next')?.addEventListener('click', () => {
+        if (currentSkillsPage < totalPages - 1) {
+            currentSkillsPage++;
+            updateSkillsCarousel();
+        }
+    });
+
     // Project Section
     const projectsContainer = document.getElementById('projects-container');
 
@@ -38,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     projectsContainer.appendChild(projectCard);
                 });
                 
-                // Add animation delays
                 setAnimationDelay(document.querySelectorAll('.project-card'));
             } else {
                 document.getElementById('projects').style.display = 'none';
@@ -58,9 +84,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
+                totalPages = Math.ceil(data.length / skillsPerPage);
+                
                 data.forEach(skill => {
                     const skillDiv = document.createElement('div');
-                    skillDiv.classList.add('skill-icon', 'animate-fadeInUp', 'p-4');
+                    skillDiv.classList.add('skill-icon', 'animate-fadeInUp', 'p-4', 'flex-shrink-0', 'w-1/6');
                     
                     const skillImg = document.createElement('img');
                     skillImg.classList.add('h-20', 'w-20', 'mx-auto');
@@ -76,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     skillsContainer.appendChild(skillDiv);
                 });
                 
-                // Add animation delays
                 setAnimationDelay(document.querySelectorAll('.skill-icon'));
+                updateSkillsCarousel();
             } else {
                 document.getElementById('skills').style.display = 'none';
                 document.querySelector('a[href="#skills"]').style.display = 'none';
@@ -98,9 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.length > 0) {
                 data.forEach(experience => {
                     const experienceCard = document.createElement('div');
-                    experienceCard.classList.add('experience-card', 'animate-fadeInUp');
+                    experienceCard.classList.add('timeline-item', 'animate-fadeInUp');
                     experienceCard.innerHTML = `
-                        <div class="p-6">
+                        <div class="timeline-content">
+                            <div class="timeline-date">${experience.from} - ${experience.to}</div>
                             <h3 class="font-bold text-xl mb-2 text-blue-400">${experience.title}</h3>
                             <p class="text-gray-300 mb-4">${experience.compName}</p>
                             <div class="space-y-2">
@@ -111,14 +140,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                     </p>
                                 `).join('')}
                             </div>
-                            <p class="date">${experience.from} - ${experience.to}</p>
                         </div>
                     `;
                     experiencesContainer.appendChild(experienceCard);
                 });
                 
-                // Add animation delays
-                setAnimationDelay(document.querySelectorAll('.experience-card'));
+                setAnimationDelay(document.querySelectorAll('.timeline-item'));
             } else {
                 document.getElementById('experiences').style.display = 'none';
                 document.querySelector('a[href="#experiences"]').style.display = 'none';
@@ -156,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     certificationsContainer.appendChild(certificateCard);
                 });
                 
-                // Add animation delays
                 setAnimationDelay(document.querySelectorAll('.certification-card'));
             } else {
                 document.getElementById('certifications').style.display = 'none';

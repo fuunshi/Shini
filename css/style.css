@@ -9,6 +9,133 @@ body {
     color: #cbd5e0;
 }
 
+/* Hero Section */
+.hero-gradient {
+    background: linear-gradient(135deg, rgba(66, 153, 225, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-title {
+    background: linear-gradient(to right, #4299e1, #9f7aea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient 8s ease infinite;
+    background-size: 200% auto;
+}
+
+.hero-tagline {
+    color: #a0aec0;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Skills Carousel */
+.skills-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(66, 153, 225, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-button:hover {
+    background: rgba(66, 153, 225, 0.4);
+}
+
+.carousel-button.prev {
+    left: 1rem;
+}
+
+.carousel-button.next {
+    right: 1rem;
+}
+
+/* Timeline Experience */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: #4299e1;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    margin: 2rem 0;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: 30px;
+    margin-left: 50%;
+}
+
+.timeline-content {
+    background: rgba(26, 32, 44, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #2d3748;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: #4299e1;
+}
+
+.timeline-date {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: rgba(66, 153, 225, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #4299e1;
+}
+
 /* Project Cards Animation and Styling */
 .project-card {
     border: 1px solid #2d3748;
@@ -64,17 +191,6 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     border-color: #4299e1;
-}
-
-.experience-card .date {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 0.875rem;
-    background-color: rgba(66, 153, 225, 0.2);
-    color: #4299e1;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
 }
 
 /* Skills Section */
@@ -156,6 +272,18 @@ body {
     .section-header::after {
         left: 25%;
         width: 50%;
+    }
+
+    .timeline::before {
+        left: 0;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd) {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 0;
+        margin-left: 0;
     }
 }
 

@@ -22,7 +22,7 @@
     <nav class="fixed top-0 left-0 right-0 z-20 backdrop-blur-md bg-gray-900/80">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="#main" class="text-2xl font-bold cursor-pointer hover:text-blue-400 transition-colors duration-300">Pranil Shrestha</a>
+                <a href="#main" class="text-2xl font-bold cursor-pointer hover:text-blue-400 transition-colors duration-300">Dev Mode: Full-Stack | Side Quest: Cyber</a>
                 <button id="mobile-menu-button" class="md:hidden text-2xl hover:text-blue-400 transition-colors duration-300">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -42,11 +42,12 @@
 
     <!-- Main section -->
     <section id="main" class="min-h-screen flex flex-col items-center justify-center text-center relative z-10">
-        <div class="animate-fadeInUp">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+        <div class="hero-gradient p-8 rounded-2xl animate-fadeInUp max-w-4xl mx-auto">
+            <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
                 Pranil Shrestha
             </h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-300">Software Developer</p>
+            <p class="text-xl md:text-2xl mb-4 text-gray-300">Software Developer</p>
+            <p class="hero-tagline mb-8">Curious by nature, secure by design — building software that lasts.</p>
             <div class="mb-8">
                 <!-- Social media links -->
                 <div class="mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl space-x-6">
@@ -92,8 +93,16 @@
     <section id="skills" class="py-20 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-header text-4xl font-bold text-blue-400">Skills</h2>
-            <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                <!-- Skill icons dynamically generated -->
+            <div class="skills-carousel">
+                <button class="carousel-button prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-button next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="skills-track" id="skills-container">
+                    <!-- Skill icons dynamically generated -->
+                </div>
             </div>
         </div>
     </section>
@@ -102,8 +111,10 @@
     <section id="experiences" class="py-20 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-header text-4xl font-bold text-blue-400">Experience</h2>
-            <div id="experiences-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Experience cards dynamically generated -->
+            <div class="timeline">
+                <div id="experiences-container">
+                    <!-- Experience cards dynamically generated -->
+                </div>
             </div>
         </div>
     </section>
@@ -120,7 +131,7 @@
 
     <!-- Footer section -->
     <footer class="bg-gray-900 text-center py-8 relative z-10">
-        <div class="text-gray-400">© 2024 Pranil Shrestha. All rights reserved.</div>
+        <div id="copyright" class="text-gray-400"></div>
     </footer>
 
     <script src="./library/custom.js"></script>
@@ -145,8 +156,10 @@
             navLinks.classList.toggle('p-4');
             navLinks.classList.toggle('space-y-4');
         });
-    </script>
 
+        // Dynamic copyright year
+        document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} Pranil Shrestha. All rights reserved.`;
+    </script>
 </body>
 
 </html>
