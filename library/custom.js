@@ -6,33 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Skills Carousel functionality
-    let currentSkillsPage = 0;
-    const skillsPerPage = 6;
-    let totalPages = 0;
-
-    function updateSkillsCarousel() {
-        const track = document.querySelector('.skills-track');
-        if (!track) return;
-        
-        const offset = -currentSkillsPage * (100 / Math.ceil(totalPages));
-        track.style.transform = `translateX(${offset}%)`;
-    }
-
-    document.querySelector('.carousel-button.prev')?.addEventListener('click', () => {
-        if (currentSkillsPage > 0) {
-            currentSkillsPage--;
-            updateSkillsCarousel();
-        }
-    });
-
-    document.querySelector('.carousel-button.next')?.addEventListener('click', () => {
-        if (currentSkillsPage < totalPages - 1) {
-            currentSkillsPage++;
-            updateSkillsCarousel();
-        }
-    });
-
     // Project Section
     const projectsContainer = document.getElementById('projects-container');
 
@@ -84,11 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
-                totalPages = Math.ceil(data.length / skillsPerPage);
+                // Duplicate the skills array for seamless loop
+                const duplicatedData = [...data, ...data];
                 
-                data.forEach(skill => {
+                duplicatedData.forEach(skill => {
                     const skillDiv = document.createElement('div');
-                    skillDiv.classList.add('skill-icon', 'animate-fadeInUp', 'p-4', 'flex-shrink-0', 'w-1/6');
+                    skillDiv.classList.add('skill-icon', 'animate-fadeInUp', 'p-4');
                     
                     const skillImg = document.createElement('img');
                     skillImg.classList.add('h-20', 'w-20', 'mx-auto');
@@ -105,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 
                 setAnimationDelay(document.querySelectorAll('.skill-icon'));
-                updateSkillsCarousel();
             } else {
                 document.getElementById('skills').style.display = 'none';
                 document.querySelector('a[href="#skills"]').style.display = 'none';
