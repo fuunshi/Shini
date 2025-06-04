@@ -18,19 +18,22 @@
 </head>
 
 <body class="bg-gray-900 text-white">
-
     <!-- Navigation bar -->
-    <nav class="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-4 bg-gray-800">
-        <a href="#main" class="text-2xl font-bold cursor-pointer">Pranil Shrestha</a>
-        <button id="mobile-menu-button" class="md:hidden">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div id="nav-links" class="hidden md:flex items-center md:space-x-4">
-            <a href="#projects" class="hover:text-gray-400 transition duration-300">Projects</a>
-            <a href="#skills" class="hover:text-gray-400 transition duration-300">Skills</a>
-            <a href="#experiences" class="hover:text-gray-400 transition duration-300">Experience</a>
-            <a href="#certifications" class="hover:text-gray-400 transition duration-300">Certifications</a>
-            <a href="./img/cv/PranilShresthaCV.pdf" class="bg-gray-800 text-white px-4 py-2 rounded-full text-lg hover:bg-gray-700 transition duration-300">Download CV</a>
+    <nav class="fixed top-0 left-0 right-0 z-20 backdrop-blur-md bg-gray-900/80">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#main" class="text-2xl font-bold cursor-pointer hover:text-blue-400 transition-colors duration-300">Pranil Shrestha</a>
+                <button id="mobile-menu-button" class="md:hidden text-2xl hover:text-blue-400 transition-colors duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div id="nav-links" class="hidden md:flex items-center md:space-x-8">
+                    <a href="#projects" class="hover:text-blue-400 transition-colors duration-300">Projects</a>
+                    <a href="#skills" class="hover:text-blue-400 transition-colors duration-300">Skills</a>
+                    <a href="#experiences" class="hover:text-blue-400 transition-colors duration-300">Experience</a>
+                    <a href="#certifications" class="hover:text-blue-400 transition-colors duration-300">Certifications</a>
+                    <a href="./img/cv/PranilShresthaCV.pdf" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105">Download CV</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -38,36 +41,47 @@
     <div id="particles-js" class="absolute inset-0 z-0"></div>
 
     <!-- Main section -->
-    <section id="main" class="min-h-screen flex flex-col items-center justify-center text-center">
-        <h1 class="text-3xl md:text-6xl mb-4">Pranil Shrestha</h1>
-        <p class="text-lg md:text-xl mb-8">Software Developer</p>
-        <div class="mb-4">
-            <!-- Social media links -->
-            <div class="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-6xl relative z-[1]">
-                <a href="https://www.github.com/fuunshi"
-                    class="text-blue-500 hover:text-blue-400 transition duration-300"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/linarp_stha"
-                    class="text-pink-500 hover:text-pink-400 transition duration-300"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/pranil-shrestha"
-                    class="text-blue-700 hover:text-blue-600 transition duration-300"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="mailto:mail@pranilshrestha.com.np"
-                    class="text-gray-400 hover:text-white transition duration-300"><i class="far fa-envelope"></i></a>
+    <section id="main" class="min-h-screen flex flex-col items-center justify-center text-center relative z-10">
+        <div class="animate-fadeInUp">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                Pranil Shrestha
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300">Software Developer</p>
+            <div class="mb-8">
+                <!-- Social media links -->
+                <div class="mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl space-x-6">
+                    <a href="https://www.github.com/fuunshi"
+                        class="text-gray-300 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 inline-block">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/linarp_stha"
+                        class="text-gray-300 hover:text-pink-400 transition-all duration-300 transform hover:scale-110 inline-block">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pranil-shrestha"
+                        class="text-gray-300 hover:text-blue-600 transition-all duration-300 transform hover:scale-110 inline-block">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:mail@pranilshrestha.com.np"
+                        class="text-gray-300 hover:text-red-400 transition-all duration-300 transform hover:scale-110 inline-block">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </div>
+                <a href="#projects"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-lg transition-all duration-300 transform hover:scale-105 inline-block">
+                    View My Work
+                </a>
             </div>
-            <a href="#projects"
-                class="bg-gray-800 text-white px-6 py-3 rounded-full text-lg hover:bg-gray-700 transition duration-300">Checkout
-                my Projects</a>
         </div>
-        <a href="#projects" class="text-gray-400 hover:text-white transition duration-300 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl"></i>
+        <a href="#projects" class="absolute bottom-8 text-gray-400 hover:text-white transition-all duration-300 animate-bounce">
+            <i class="fas fa-chevron-down text-3xl"></i>
         </a>
     </section>
 
     <!-- Projects section -->
-    <section id="projects" class="py-16 px-6">
+    <section id="projects" class="py-20 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-8">Projects</h2>
+            <h2 class="section-header text-4xl font-bold text-blue-400">Projects</h2>
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project cards dynamically generated -->
             </div>
@@ -75,19 +89,19 @@
     </section>
 
     <!-- Skills section -->
-    <section id="skills" class="py-16 px-6 bg-gray-800">
+    <section id="skills" class="py-20 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-8 text-white">Skills</h2>
-            <div id="skills-container" class="flex justify-center mb-4">
+            <h2 class="section-header text-4xl font-bold text-blue-400">Skills</h2>
+            <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
                 <!-- Skill icons dynamically generated -->
             </div>
         </div>
     </section>
 
     <!-- Experience section -->
-    <section id="experiences" class="py-16 px-6">
+    <section id="experiences" class="py-20 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-8">Experience</h2>
+            <h2 class="section-header text-4xl font-bold text-blue-400">Experience</h2>
             <div id="experiences-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Experience cards dynamically generated -->
             </div>
@@ -95,9 +109,9 @@
     </section>
 
     <!-- Certifications section -->
-    <section id="certifications" class="py-16 px-6">
+    <section id="certifications" class="py-20 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-8">Certifications</h2>
+            <h2 class="section-header text-4xl font-bold text-blue-400">Certifications</h2>
             <div id="certifications-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Certification cards dynamically generated -->
             </div>
@@ -105,7 +119,7 @@
     </section>
 
     <!-- Footer section -->
-    <footer class="bg-gray-800 text-center py-4">
+    <footer class="bg-gray-900 text-center py-8 relative z-10">
         <div class="text-gray-400">© 2024 Pranil Shrestha. All rights reserved.</div>
     </footer>
 
@@ -119,7 +133,17 @@
     <!-- Nav Script -->
     <script>
         document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            document.getElementById('nav-links').classList.toggle('hidden');
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-full');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('right-0');
+            navLinks.classList.toggle('bg-gray-900');
+            navLinks.classList.toggle('p-4');
+            navLinks.classList.toggle('space-y-4');
         });
     </script>
 

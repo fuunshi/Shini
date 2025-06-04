@@ -9,52 +9,158 @@ body {
     color: #cbd5e0;
 }
 
-.project-card,
-.experience-card,
-.certification-card {
+/* Project Cards Animation and Styling */
+.project-card {
     border: 1px solid #2d3748;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: rgba(26, 32, 44, 0.8);
+    backdrop-filter: blur(10px);
 }
 
-.project-card:hover,
-.experience-card:hover,
-.certification-card:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    border-color: #4299e1;
+}
+
+.project-card .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(26, 32, 44, 0) 0%, rgba(26, 32, 44, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-card img {
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Experience Cards */
+.experience-card {
+    border: 1px solid #2d3748;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(26, 32, 44, 0.8);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #4299e1;
 }
 
 .experience-card .date {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.75rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.875rem;
+    background-color: rgba(66, 153, 225, 0.2);
+    color: #4299e1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+/* Skills Section */
+.skill-icon {
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    opacity: 0.7;
 }
 
+.skill-icon:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+/* Certification Cards */
+.certification-card {
+    border: 1px solid #2d3748;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(26, 32, 44, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #4299e1;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Section Headers */
+.section-header {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(to right, #4299e1, transparent);
+    border-radius: 2px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-
-    /* Styles for screens smaller than 768px */
     .project-card,
     .experience-card,
     .certification-card {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-header {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .section-header::after {
+        left: 25%;
+        width: 50%;
     }
 }
 
 @media (max-width: 480px) {
-
-    /* Styles for screens smaller than 480px */
     body {
         font-size: 14px;
     }
 }
-

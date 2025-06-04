@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Utility function for animation delay
+    function setAnimationDelay(elements, baseDelay = 0.1) {
+        elements.forEach((el, index) => {
+            el.style.animationDelay = `${baseDelay * index}s`;
+        });
+    }
+
     // Project Section
     const projectsContainer = document.getElementById('projects-container');
 
@@ -8,29 +15,40 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.length > 0) {
                 data.forEach(project => {
                     const projectCard = document.createElement('div');
-                    projectCard.classList.add('project-card');
+                    projectCard.classList.add('project-card', 'animate-fadeInUp');
                     projectCard.innerHTML = `
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="font-bold text-xl mb-2">${project.title}</h3>
-                            <p class="text-gray-700 mb-4">${project.description}</p>
-                            <div class="flex justify-center space-x-4">
-                                <a href="${project.codeLink}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Code</a>
-                                <a href="${project.demoLink}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Try It</a>
+                        <div class="relative overflow-hidden">
+                            <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
+                            <div class="project-overlay flex items-center justify-center">
+                                <div class="space-x-4">
+                                    <a href="${project.codeLink}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105">
+                                        <i class="fab fa-github mr-2"></i>Code
+                                    </a>
+                                    <a href="${project.demoLink}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105">
+                                        <i class="fas fa-external-link-alt mr-2"></i>Demo
+                                    </a>
+                                </div>
                             </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-3 text-blue-400">${project.title}</h3>
+                            <p class="text-gray-300 mb-4">${project.description}</p>
                         </div>
                     `;
                     projectsContainer.appendChild(projectCard);
                 });
+                
+                // Add animation delays
+                setAnimationDelay(document.querySelectorAll('.project-card'));
             } else {
-                document.getElementById('projects').style.display = 'none'; // Hide section if no projects
-                document.querySelector('a[href="#projects"]').style.display = 'none'; // Hide navbar link for Projects
+                document.getElementById('projects').style.display = 'none';
+                document.querySelector('a[href="#projects"]').style.display = 'none';
             }
         })
         .catch(error => {
             console.error('Error fetching projects:', error);
-            document.getElementById('projects').style.display = 'none'; // Hide section on error
-            document.querySelector('a[href="#projects"]').style.display = 'none'; // Hide navbar link for Projects
+            document.getElementById('projects').style.display = 'none';
+            document.querySelector('a[href="#projects"]').style.display = 'none';
         });
 
     // Skills Section
@@ -41,22 +59,34 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.length > 0) {
                 data.forEach(skill => {
+                    const skillDiv = document.createElement('div');
+                    skillDiv.classList.add('skill-icon', 'animate-fadeInUp', 'p-4');
+                    
                     const skillImg = document.createElement('img');
-                    skillImg.classList.add('h-24', 'w-24')
+                    skillImg.classList.add('h-20', 'w-20', 'mx-auto');
                     skillImg.src = skill.url;
                     skillImg.alt = skill.name;
-
-                    skillsContainer.appendChild(skillImg);
+                    
+                    const skillName = document.createElement('p');
+                    skillName.classList.add('text-center', 'mt-2', 'text-sm', 'text-gray-300');
+                    skillName.textContent = skill.name;
+                    
+                    skillDiv.appendChild(skillImg);
+                    skillDiv.appendChild(skillName);
+                    skillsContainer.appendChild(skillDiv);
                 });
+                
+                // Add animation delays
+                setAnimationDelay(document.querySelectorAll('.skill-icon'));
             } else {
-                document.getElementById('skills').style.display = 'none'; // Hide skills section if no skills are available
-                document.querySelector('a[href="#skills"]').style.display = 'none'; // Hide navbar link for Skills
+                document.getElementById('skills').style.display = 'none';
+                document.querySelector('a[href="#skills"]').style.display = 'none';
             }
         })
         .catch(error => {
             console.error('Error fetching skills:', error);
-            document.getElementById('skills').style.display = 'none'; // Hide section on error
-            document.querySelector('a[href="#skills"]').style.display = 'none'; // Hide navbar link for Skills
+            document.getElementById('skills').style.display = 'none';
+            document.querySelector('a[href="#skills"]').style.display = 'none';
         });
 
     // Experiences Section
@@ -68,26 +98,36 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.length > 0) {
                 data.forEach(experience => {
                     const experienceCard = document.createElement('div');
-                    experienceCard.classList.add('experience-card');
+                    experienceCard.classList.add('experience-card', 'animate-fadeInUp');
                     experienceCard.innerHTML = `
-                        <div class="p-4">
-                            <h3 class="font-bold text-xl mb-2">${experience.title}</h3>
-                            <p class="text-gray-700 mb-2">${experience.compName}</p>
-                            ${experience.description.map(point => `<p>${point}</p>`).join('')}
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2 text-blue-400">${experience.title}</h3>
+                            <p class="text-gray-300 mb-4">${experience.compName}</p>
+                            <div class="space-y-2">
+                                ${experience.description.map(point => `
+                                    <p class="text-gray-400 flex items-start">
+                                        <span class="text-blue-400 mr-2">▹</span>
+                                        ${point.substring(2)}
+                                    </p>
+                                `).join('')}
+                            </div>
                             <p class="date">${experience.from} - ${experience.to}</p>
                         </div>
                     `;
                     experiencesContainer.appendChild(experienceCard);
                 });
+                
+                // Add animation delays
+                setAnimationDelay(document.querySelectorAll('.experience-card'));
             } else {
-                document.getElementById('experiences').style.display = 'none'; // Hide Experience section if no experiences are available
-                document.querySelector('a[href="#experiences"]').style.display = 'none'; // Hide navbar link for Experiences
+                document.getElementById('experiences').style.display = 'none';
+                document.querySelector('a[href="#experiences"]').style.display = 'none';
             }
         })
         .catch(error => {
             console.error('Error fetching experiences:', error);
-            document.getElementById('experiences').style.display = 'none'; // Hide section on error
-            document.querySelector('a[href="#experiences"]').style.display = 'none'; // Hide navbar link for Experiences
+            document.getElementById('experiences').style.display = 'none';
+            document.querySelector('a[href="#experiences"]').style.display = 'none';
         });
 
     // Certifications Section
@@ -99,25 +139,33 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.length > 0) {
                 data.forEach(certificate => {
                     const certificateCard = document.createElement('div');
-                    certificateCard.classList.add('certification-card');
+                    certificateCard.classList.add('certification-card', 'animate-fadeInUp');
                     certificateCard.innerHTML = `
-                        <img src="${certificate.imgURL}" alt="${certificate.title}" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="font-bold text-xl mb-2">${certificate.title}</h3>
-                            <p class="text-gray-700 mb-2">${certificate.desc}</p>
-                            <a href="${certificate.imgURL}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">View</a>
+                        <div class="relative overflow-hidden">
+                            <img src="${certificate.imgURL}" alt="${certificate.title}" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2 text-blue-400">${certificate.title}</h3>
+                            <p class="text-gray-300 mb-4">${certificate.desc}</p>
+                            <a href="${certificate.imgURL}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-certificate mr-2"></i>View Certificate
+                            </a>
                         </div>
                     `;
                     certificationsContainer.appendChild(certificateCard);
                 });
+                
+                // Add animation delays
+                setAnimationDelay(document.querySelectorAll('.certification-card'));
             } else {
-                document.getElementById('certifications').style.display = 'none'; // Hide Certifications section if no certifications are available
-                document.querySelector('a[href="#certifications"]').style.display = 'none'; // Hide navbar link for Certifications
+                document.getElementById('certifications').style.display = 'none';
+                document.querySelector('a[href="#certifications"]').style.display = 'none';
             }
         })
         .catch(error => {
             console.error('Error fetching certifications:', error);
-            document.getElementById('certifications').style.display = 'none'; // Hide section on error
-            document.querySelector('a[href="#certifications"]').style.display = 'none'; // Hide navbar link for Certifications
+            document.getElementById('certifications').style.display = 'none';
+            document.querySelector('a[href="#certifications"]').style.display = 'none';
         });
 });
