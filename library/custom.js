@@ -340,25 +340,90 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {
-                data.forEach(experience => {
+                data.forEach((experience, index) => {
                     const experienceCard = document.createElement('div');
                     experienceCard.classList.add('timeline-item');
+                    
+                    // Determine if description is long (more than 3 points)
+                    const hasLongDescription = experience.description.length > 3;
+                    const visibleDescription = hasLongDescription ? experience.description.slice(0, 3) : experience.description;
+                    const hiddenDescription = hasLongDescription ? experience.description.slice(3) : [];
+                    
+                    // Build company name with or without link
+                    let companyNameHTML = '';
+                    if (experience.href) {
+                        companyNameHTML = `<a href="${experience.href}" target="_blank" rel="noopener noreferrer" class="company-link">${experience.compName}</a>`;
+                    } else {
+                        companyNameHTML = experience.compName;
+                    }
+                    
+                    // Build logo HTML if available
+                    let logoHTML = '';
+                    if (experience.logo && experience.href) {
+                        logoHTML = `
+                            <div class="company-logo">
+                                <a href="${experience.href}" target="_blank" rel="noopener noreferrer">
+                                    <img src="${experience.logo}" alt="${experience.compName} logo">
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
                     experienceCard.innerHTML = `
                         <div class="timeline-content">
                             <div class="timeline-date">${experience.from} - ${experience.to}</div>
+                            ${logoHTML}
                             <h3>${experience.title}</h3>
-                            <p>${experience.compName}</p>
+                            <p>${companyNameHTML}</p>
                             <div class="space-y-2">
-                                ${experience.description.map(point => `
-                                    <p>
+                                ${visibleDescription.map(point => `
+                                    <p class="experience-point">
                                         <span>▹</span>
                                         ${point.substring(2)}
                                     </p>
                                 `).join('')}
+                                ${hasLongDescription ? `
+                                    <div class="experience-hidden-points" id="hidden-points-${index}" style="display: none;">
+                                        ${hiddenDescription.map(point => `
+                                            <p class="experience-point">
+                                                <span>▹</span>
+                                                ${point.substring(2)}
+                                            </p>
+                                        `).join('')}
+                                    </div>
+                                    <button class="experience-toggle-btn" id="toggle-btn-${index}" data-index="${index}">
+                                        <i class="fas fa-chevron-down"></i>
+                                        <span>Show More</span>
+                                    </button>
+                                ` : ''}
                             </div>
                         </div>
                     `;
                     experiencesContainer.appendChild(experienceCard);
+                    
+                    // Add toggle functionality for long descriptions
+                    if (hasLongDescription) {
+                        const toggleBtn = experienceCard.querySelector(`#toggle-btn-${index}`);
+                        const hiddenPoints = experienceCard.querySelector(`#hidden-points-${index}`);
+                        
+                        toggleBtn.addEventListener('click', function() {
+                            const isExpanded = hiddenPoints.style.display !== 'none';
+                            
+                            if (isExpanded) {
+                                hiddenPoints.style.display = 'none';
+                                toggleBtn.innerHTML = `
+                                    <i class="fas fa-chevron-down"></i>
+                                    <span>Show More</span>
+                                `;
+                            } else {
+                                hiddenPoints.style.display = 'block';
+                                toggleBtn.innerHTML = `
+                                    <i class="fas fa-chevron-up"></i>
+                                    <span>Show Less</span>
+                                `;
+                            }
+                        });
+                    }
                 });
                 
                 setAnimationDelay(document.querySelectorAll('.timeline-item'));
