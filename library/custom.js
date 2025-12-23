@@ -1,3 +1,9 @@
+/* 
+ * Note: This file loads data from JSON files that are controlled by the site owner.
+ * The JSON files (projects.json, skills.json, etc.) should only be edited by trusted sources.
+ * While some innerHTML usage remains for convenience, ensure JSON data is never user-generated.
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     // Utility function for animation delay
     function setAnimationDelay(elements, baseDelay = 0.1) {
@@ -25,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         
                         const icon = document.createElement('i');
                         icon.className = link.icon;
-                        icon.style.color = link.color;
+                        // Validate color to prevent CSS injection
+                        if (link.color && /^#[0-9A-Fa-f]{3,6}$/.test(link.color)) {
+                            icon.style.color = link.color;
+                        }
                         
                         const span = document.createElement('span');
                         span.textContent = link.name;
