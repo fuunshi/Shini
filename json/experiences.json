@@ -3,6 +3,7 @@
     "title": "Backend Developer",
     "compName": "Cynical Technology",
     "href": "https://cynicaltechnology.com/",
+    "logo": "https://cynicaltechnology.com/wp-content/uploads/2019/10/Cynical-logo-1.png",
     "description": [
       "→ Develop and maintain server-side applications using Node.js.",
       "→ Design and integrate APIs with internal and third→party services.",
@@ -21,6 +22,7 @@
     "title": "Advanced AI Trainer Software Development (Full-Stack Developers)",
     "compName": "Invisible Technologies",
     "href": "https://invisibletech.ai/",
+    "logo": "./assets/companies/invisible.png",
     "description": [
       "→ Conducted AI model data validation, and evaluation to improve AI-generated outputs.",
       "→ Wrote supporting scripts, unit tests, and validation code to ensure accuracy and reliability of AI results.",
@@ -44,6 +46,7 @@
   {
     "title": "Full Stack Developer",
     "compName": "Yuwasoft",
+    "logo": "./assets/companies/yuwasoft.png",
     "href": "https://yuwasoft.com/",
     "description": [
       "→ Lead a team and developed a smart accounting using Django",
