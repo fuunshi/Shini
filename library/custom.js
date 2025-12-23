@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('./json/links.json')
             .then(response => response.json())
             .then(data => {
-                if (data.length > 0) {
+                if (data && data.length > 0) {
                     // Load social links in About section
                     data.forEach(link => {
                         const linkElement = document.createElement('a');
@@ -22,11 +22,20 @@ document.addEventListener('DOMContentLoaded', function () {
                         linkElement.target = '_blank';
                         linkElement.rel = 'noopener noreferrer';
                         linkElement.classList.add('social-link');
-                        linkElement.innerHTML = `
-                            <i class="${link.icon}" style="color: ${link.color}"></i>
-                            <span>${link.name}</span>
-                            <i class="fas fa-external-link-alt ml-auto text-sm"></i>
-                        `;
+                        
+                        const icon = document.createElement('i');
+                        icon.className = link.icon;
+                        icon.style.color = link.color;
+                        
+                        const span = document.createElement('span');
+                        span.textContent = link.name;
+                        
+                        const externalIcon = document.createElement('i');
+                        externalIcon.className = 'fas fa-external-link-alt ml-auto text-sm';
+                        
+                        linkElement.appendChild(icon);
+                        linkElement.appendChild(span);
+                        linkElement.appendChild(externalIcon);
                         aboutContainer.appendChild(linkElement);
                     });
 
@@ -37,13 +46,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         footerLink.target = '_blank';
                         footerLink.rel = 'noopener noreferrer';
                         footerLink.title = link.name;
-                        footerLink.innerHTML = `<i class="${link.icon}"></i>`;
+                        
+                        const footerIcon = document.createElement('i');
+                        footerIcon.className = link.icon;
+                        footerLink.appendChild(footerIcon);
+                        
                         footerContainer.appendChild(footerLink);
                     });
                 }
             })
             .catch(error => {
-                console.error('Error fetching social links:', error);
+                console.error('Error loading social links from JSON:', error);
             });
     }
 
@@ -55,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('./json/projects.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 data.forEach(project => {
                     const projectCard = document.createElement('div');
                     projectCard.classList.add('project-card');
@@ -87,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error fetching projects:', error);
+            console.error('Error loading projects from JSON:', error);
             document.getElementById('projects').style.display = 'none';
             const projectLink = document.querySelector('a[href="#projects"]');
             if (projectLink) projectLink.style.display = 'none';
@@ -99,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('./json/skills.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 // Duplicate the skills array for seamless loop
                 const duplicatedData = [...data, ...data];
                 
@@ -121,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error fetching skills:', error);
+            console.error('Error loading skills from JSON:', error);
             document.getElementById('skills').style.display = 'none';
             const skillsLink = document.querySelector('a[href="#skills"]');
             if (skillsLink) skillsLink.style.display = 'none';
@@ -133,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('./json/experiences.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 data.forEach(experience => {
                     const experienceCard = document.createElement('div');
                     experienceCard.classList.add('timeline-item');
@@ -163,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error fetching experiences:', error);
+            console.error('Error loading experiences from JSON:', error);
             document.getElementById('experiences').style.display = 'none';
             const experiencesLink = document.querySelector('a[href="#experiences"]');
             if (experiencesLink) experiencesLink.style.display = 'none';
@@ -175,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('./json/certifications.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 data.forEach(certificate => {
                     const certificateCard = document.createElement('div');
                     certificateCard.classList.add('certification-card');
@@ -203,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error fetching certifications:', error);
+            console.error('Error loading certifications from JSON:', error);
             document.getElementById('certifications').style.display = 'none';
             const certificationsLink = document.querySelector('a[href="#certifications"]');
             if (certificationsLink) certificationsLink.style.display = 'none';
