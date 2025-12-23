@@ -12,12 +12,6 @@
         "color": "#0077b5"
     },
     {
-        "name": "Instagram",
-        "url": "https://www.instagram.com/linarp_stha",
-        "icon": "fab fa-instagram",
-        "color": "#E4405F"
-    },
-    {
         "name": "Email",
         "url": "mailto:mail@pranilshrestha.com.np",
         "icon": "far fa-envelope",

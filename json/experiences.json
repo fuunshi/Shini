@@ -1,24 +1,56 @@
 [
   {
+    "title": "Backend Developer",
+    "compName": "Cynical Technology",
+    "href": "https://cynicaltechnology.com/",
+    "description": [
+      "→ Develop and maintain server-side applications using Node.js.",
+      "→ Design and integrate APIs with internal and third→party services.",
+      "→ Collaborate with front-end developers and security teams.",
+      "→ Ensure code quality through unit testing, code reviews, and best practices.",
+      "→ Handle application deployment on cloud platforms.",
+      "→ Set up CI/CD pipelines and automate deployment workflows.",
+      "→ Monitor application performance and troubleshoot issues proactively.",
+      "→ Follow secure coding practices and integrate security measures into code and deployments.",
+      "→ Maintain documentation for code, deployments, and technical decisions."
+    ],
+    "from": "May 2025",
+    "to": "present"
+  },
+  {
+    "title": "Advanced AI Trainer Software Development (Full-Stack Developers)",
+    "compName": "Invisible Technologies",
+    "href": "https://invisibletech.ai/",
+    "description": [
+      "→ Conducted AI model data validation, and evaluation to improve AI-generated outputs.",
+      "→ Wrote supporting scripts, unit tests, and validation code to ensure accuracy and reliability of AI results.",
+      "→ Collaborated with the global team as part of the company’s on-demand AI talent pool."
+    ],
+    "from": "March 2025",
+    "to": "present"
+  },
+  {
     "title": "Junior Backend Developer",
     "compName": "Geek Tech Solutions",
+    "href": "https://thegtspl.com/",
     "description": [
       "→ Developed a scalable POS cafe project in Nodejs, Express",
       "→ Maintained and refactored code in older codebase",
       "→ Implmeneted Real time chating system using redis and websocket"
     ],
-    "from": "Dec 2024",
-    "to": "present"
+    "from": "Nov 2024",
+    "to": "May 2025"
   },
   {
     "title": "Full Stack Developer",
     "compName": "Yuwasoft",
+    "href": "https://yuwasoft.com/",
     "description": [
       "→ Lead a team and developed a smart accounting using Django",
       "→ Configured Docker to containerize the application to build and test application quickly",
       "→ Refactored Code to MERN Stack for better support"
     ],
-    "from": "Sept 2023",
+    "from": "Jun 2024",
     "to": "Dec 2024"
   },
   {
@@ -35,7 +67,9 @@
   {
     "title": "Freelancer",
     "compName": "Freelancer",
-    "description": ["→ Developed a website for a local business using Django"],
+    "description": [
+      "→ Developed a website for a local business using Django"
+    ],
     "from": "Jan 2023",
     "to": "present"
   }
