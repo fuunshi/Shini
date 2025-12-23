@@ -157,8 +157,24 @@
                     <!-- Skill icons dynamically generated -->
                 </div>
             </div>
+            <button class="skills-expand-btn" id="skills-expand-btn">
+                <i class="fas fa-expand-alt mr-2"></i>View All Skills
+            </button>
         </div>
     </section>
+
+    <!-- Skills Modal -->
+    <div class="skills-modal" id="skills-modal">
+        <div class="skills-modal-content">
+            <button class="skills-modal-close" id="skills-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="text-3xl font-bold text-accent mb-4">All Skills & Technologies</h2>
+            <div class="skills-grid" id="skills-grid">
+                <!-- All skills displayed here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Experience Section -->
     <section id="experiences" class="section-padding">
@@ -229,6 +245,44 @@
             </div>
         </div>
     </footer>
+
+    <!-- Project Detail Page -->
+    <div class="project-detail-page" id="project-detail-page">
+        <div class="project-detail-header">
+            <h2 class="text-2xl font-bold text-accent" id="project-detail-header-title"></h2>
+            <button class="project-detail-close" id="project-detail-close">
+                <i class="fas fa-times mr-2"></i>Close
+            </button>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-images">
+                <div class="project-main-image" id="project-main-image">
+                    <!-- Main image displayed here -->
+                </div>
+                <div class="project-carousel">
+                    <div class="project-carousel-track" id="project-carousel-track">
+                        <!-- Carousel images here -->
+                    </div>
+                    <div class="project-carousel-nav">
+                        <button id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button id="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="project-detail-info">
+                <h1 id="project-detail-title"></h1>
+                <p id="project-detail-description"></p>
+                <div class="project-detail-links">
+                    <a id="project-detail-code" class="code-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>View Code
+                    </a>
+                    <a id="project-detail-demo" class="demo-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./library/custom.js"></script>
 
