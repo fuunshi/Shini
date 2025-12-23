@@ -335,6 +335,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Experiences Section
     const experiencesContainer = document.getElementById('experiences-container');
+    
+    // Helper function to validate and sanitize URLs
+    function isValidUrl(url) {
+        try {
+            const urlObj = new URL(url);
+            return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+        } catch {
+            return false;
+        }
+    }
+    
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
 
     fetch('./json/experiences.json')
         .then(response => response.json())
@@ -351,19 +368,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                     // Build company name with or without link
                     let companyNameHTML = '';
-                    if (experience.href) {
-                        companyNameHTML = `<a href="${experience.href}" target="_blank" rel="noopener noreferrer" class="company-link">${experience.compName}</a>`;
+                    if (experience.href && isValidUrl(experience.href)) {
+                        const safeHref = escapeHtml(experience.href);
+                        const safeCompName = escapeHtml(experience.compName);
+                        companyNameHTML = `<a href="${safeHref}" target="_blank" rel="noopener noreferrer" class="company-link">${safeCompName}</a>`;
                     } else {
-                        companyNameHTML = experience.compName;
+                        companyNameHTML = escapeHtml(experience.compName);
                     }
                     
                     // Build logo HTML if available
                     let logoHTML = '';
-                    if (experience.logo && experience.href) {
+                    if (experience.logo && experience.href && isValidUrl(experience.href)) {
+                        const safeHref = escapeHtml(experience.href);
+                        const safeLogo = escapeHtml(experience.logo);
+                        const safeCompName = escapeHtml(experience.compName);
                         logoHTML = `
                             <div class="company-logo">
-                                <a href="${experience.href}" target="_blank" rel="noopener noreferrer">
-                                    <img src="${experience.logo}" alt="${experience.compName} logo">
+                                <a href="${safeHref}" target="_blank" rel="noopener noreferrer">
+                                    <img src="${safeLogo}" alt="${safeCompName} logo">
                                 </a>
                             </div>
                         `;
@@ -371,15 +393,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                     experienceCard.innerHTML = `
                         <div class="timeline-content">
-                            <div class="timeline-date">${experience.from} - ${experience.to}</div>
+                            <div class="timeline-date">${escapeHtml(experience.from)} - ${escapeHtml(experience.to)}</div>
                             ${logoHTML}
-                            <h3>${experience.title}</h3>
+                            <h3>${escapeHtml(experience.title)}</h3>
                             <p>${companyNameHTML}</p>
                             <div class="space-y-2">
                                 ${visibleDescription.map(point => `
                                     <p class="experience-point">
                                         <span>▹</span>
-                                        ${point.substring(2)}
+                                        ${escapeHtml(point.substring(2))}
                                     </p>
                                 `).join('')}
                                 ${hasLongDescription ? `
@@ -387,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         ${hiddenDescription.map(point => `
                                             <p class="experience-point">
                                                 <span>▹</span>
-                                                ${point.substring(2)}
+                                                ${escapeHtml(point.substring(2))}
                                             </p>
                                         `).join('')}
                                     </div>
