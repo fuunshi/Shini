@@ -1,0 +1,44 @@
+[
+    {
+        "name": "GitHub",
+        "url": "https://www.github.com/fuunshi",
+        "icon": "fab fa-github",
+        "color": "#333"
+    },
+    {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/pranil-shrestha",
+        "icon": "fab fa-linkedin",
+        "color": "#0077b5"
+    },
+    {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/linarp_stha",
+        "icon": "fab fa-instagram",
+        "color": "#E4405F"
+    },
+    {
+        "name": "Email",
+        "url": "mailto:mail@pranilshrestha.com.np",
+        "icon": "far fa-envelope",
+        "color": "#EA4335"
+    },
+    {
+        "name": "TryHackMe",
+        "url": "https://tryhackme.com/p/fuunshi",
+        "icon": "fas fa-shield-alt",
+        "color": "#88cc14"
+    },
+    {
+        "name": "LeetCode",
+        "url": "https://leetcode.com/fuunshi",
+        "icon": "fas fa-code",
+        "color": "#FFA116"
+    },
+    {
+        "name": "Blog",
+        "url": "https://blog.pranilshrestha.com.np",
+        "icon": "fas fa-blog",
+        "color": "#FF6B6B"
+    }
+]
