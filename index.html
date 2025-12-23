@@ -5,106 +5,183 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranil Shrestha</title>
+    <title>Pranil Shrestha - Software Developer & Security Enthusiast</title>
     <!-- External CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&family=Quicksand:wght@300..700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
         rel="stylesheet">
     <!-- External CSS for additional styles -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-dark text-light">
     <!-- Navigation bar -->
-    <nav class="fixed top-0 left-0 right-0 z-20 backdrop-blur-md bg-gray-900/80">
-        <div class="max-w-6xl mx-auto px-6 py-4">
+    <nav class="nav-bar fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="#main" class="text-2xl font-bold cursor-pointer hover:text-blue-400 transition-colors duration-300">Pranil Shrestha</a>
-                <button id="mobile-menu-button" class="md:hidden text-2xl hover:text-blue-400 transition-colors duration-300">
+                <a href="#hero" class="logo text-2xl font-bold cursor-pointer">
+                    <span class="text-accent">&lt;</span>Pranil<span class="text-accent">/&gt;</span>
+                </a>
+                <button id="mobile-menu-button" class="md:hidden text-2xl hover:text-accent transition-colors duration-300">
                     <i class="fas fa-bars"></i>
                 </button>
                 <div id="nav-links" class="hidden md:flex items-center md:space-x-8">
-                    <a href="#projects" class="hover:text-blue-400 transition-colors duration-300">Projects</a>
-                    <a href="#skills" class="hover:text-blue-400 transition-colors duration-300">Skills</a>
-                    <a href="#experiences" class="hover:text-blue-400 transition-colors duration-300">Experience</a>
-                    <a href="#certifications" class="hover:text-blue-400 transition-colors duration-300">Certifications</a>
-                    <a href="./img/cv/PranilShresthaCV.pdf" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105">Download CV</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experiences" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#certifications" class="nav-link">Certifications</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="./img/cv/PranilShresthaCV.pdf" target="_blank" class="btn-primary">
+                        <i class="fas fa-download mr-2"></i>Resume
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Particle.js background -->
-    <div id="particles-js" class="absolute inset-0 z-0"></div>
+    <div id="particles-js" class="particles-bg"></div>
 
-    <!-- Main section -->
-    <section id="main" class="min-h-screen flex flex-col items-center justify-center text-center relative z-10">
-        <div class="hero-gradient p-8 rounded-2xl animate-fadeInUp max-w-4xl mx-auto">
-            <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
-                Pranil Shrestha
-            </h1>
-            <p class="text-xl md:text-2xl mb-4 text-gray-300">Software Developer</p>
-            <p class="hero-tagline mb-8">Curious by nature, secure by design — building software that lasts.</p>
-            <div class="mb-8">
-                <!-- Social media links -->
-                <div class="mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl space-x-6">
-                    <a href="https://www.github.com/fuunshi"
-                        class="text-gray-300 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 inline-block">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/linarp_stha"
-                        class="text-gray-300 hover:text-pink-400 transition-all duration-300 transform hover:scale-110 inline-block">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/pranil-shrestha"
-                        class="text-gray-300 hover:text-blue-600 transition-all duration-300 transform hover:scale-110 inline-block">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:mail@pranilshrestha.com.np"
-                        class="text-gray-300 hover:text-red-400 transition-all duration-300 transform hover:scale-110 inline-block">
-                        <i class="far fa-envelope"></i>
-                    </a>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-greeting fade-in-up">
+                        <span class="text-accent">Hello, I'm</span>
+                    </div>
+                    <h1 class="hero-name fade-in-up delay-1">
+                        Pranil Shrestha
+                    </h1>
+                    <h2 class="hero-title fade-in-up delay-2">
+                        Software Developer & Security Enthusiast
+                    </h2>
+                    <p class="hero-description fade-in-up delay-3">
+                        Passionate about building secure, scalable applications and solving complex problems. 
+                        Specializing in full-stack development with a focus on cybersecurity.
+                    </p>
+                    <div class="hero-cta fade-in-up delay-4">
+                        <a href="#projects" class="btn-primary mr-4">
+                            <i class="fas fa-code mr-2"></i>View Projects
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            <i class="fas fa-envelope mr-2"></i>Get In Touch
+                        </a>
+                    </div>
                 </div>
-                <a href="#projects"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-lg transition-all duration-300 transform hover:scale-105 inline-block">
-                    View My Work
-                </a>
             </div>
         </div>
-        <a href="#projects" class="absolute bottom-8 text-gray-400 hover:text-white transition-all duration-300 animate-bounce">
-            <i class="fas fa-chevron-down text-3xl"></i>
-        </a>
-    </section>
-
-    <!-- Projects section -->
-    <section id="projects" class="py-20 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-header text-4xl font-bold text-blue-400">Projects</h2>
-            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project cards dynamically generated -->
-            </div>
+        <div class="scroll-indicator">
+            <a href="#about">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
     </section>
 
-    <!-- Skills section -->
-    <section id="skills" class="py-20 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-header text-4xl font-bold text-blue-400">Skills</h2>
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-accent">01.</span> About Me
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="about-text">
+                    <p class="mb-4 text-light-secondary">
+                        I'm a software developer based in Nepal, passionate about creating elegant solutions 
+                        to complex problems. My journey in tech started with curiosity and evolved into a 
+                        dedication to building secure, efficient, and user-friendly applications.
+                    </p>
+                    <p class="mb-4 text-light-secondary">
+                        Currently working as a Junior Backend Developer at Geek Tech Solutions, I specialize 
+                        in backend development with Node.js, Python, and Django. I have a strong interest in 
+                        cybersecurity and continuously work on improving my skills through platforms like 
+                        TryHackMe and HackerRank.
+                    </p>
+                    <p class="mb-6 text-light-secondary">
+                        When I'm not coding, you can find me exploring new technologies, contributing to 
+                        open-source projects, or writing technical blog posts to share my knowledge with 
+                        the community.
+                    </p>
+                    <h3 class="text-xl font-bold mb-4 text-accent">Technologies I work with:</h3>
+                    <div class="tech-list grid grid-cols-2 gap-3">
+                        <div class="tech-item">
+                            <i class="fas fa-angle-right text-accent mr-2"></i>
+                            <span>Python & Django</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-angle-right text-accent mr-2"></i>
+                            <span>JavaScript & Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-angle-right text-accent mr-2"></i>
+                            <span>React & Express</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-angle-right text-accent mr-2"></i>
+                            <span>PostgreSQL & Redis</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-angle-right text-accent mr-2"></i>
+                            <span>Docker & Git</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-angle-right text-accent mr-2"></i>
+                            <span>Cybersecurity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-links">
+                    <div class="card">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Connect With Me</h3>
+                        <div id="social-links-container" class="space-y-4">
+                            <!-- Social links will be dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-accent">02.</span> Skills & Technologies
+            </h2>
             <div class="skills-carousel">
                 <div class="skills-track" id="skills-container">
                     <!-- Skill icons dynamically generated -->
                 </div>
             </div>
+            <button class="skills-expand-btn" id="skills-expand-btn">
+                <i class="fas fa-expand-alt mr-2"></i>View All Skills
+            </button>
         </div>
     </section>
 
-    <!-- Experience section -->
-    <section id="experiences" class="py-20 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-header text-4xl font-bold text-blue-400">Experience</h2>
+    <!-- Skills Modal -->
+    <div class="skills-modal" id="skills-modal">
+        <div class="skills-modal-content">
+            <button class="skills-modal-close" id="skills-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="text-3xl font-bold text-accent mb-4">All Skills & Technologies</h2>
+            <div class="skills-grid" id="skills-grid">
+                <!-- All skills displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experiences" class="section-padding">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-accent">03.</span> Work Experience
+            </h2>
             <div class="timeline">
                 <div id="experiences-container">
                     <!-- Experience cards dynamically generated -->
@@ -113,20 +190,99 @@
         </div>
     </section>
 
-    <!-- Certifications section -->
-    <section id="certifications" class="py-20 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-header text-4xl font-bold text-blue-400">Certifications</h2>
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-accent">04.</span> Featured Projects
+            </h2>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project cards dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section-padding">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-accent">05.</span> Certifications
+            </h2>
             <div id="certifications-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Certification cards dynamically generated -->
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-dark-secondary">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="section-title">
+                <span class="text-accent">06.</span> Get In Touch
+            </h2>
+            <p class="text-xl text-light-secondary mb-8 leading-relaxed">
+                I'm always interested in hearing about new opportunities, collaborations, or just having a chat 
+                about technology and software development. Whether you have a question or just want to say hi, 
+                I'll try my best to get back to you!
+            </p>
+            <a href="mailto:mail@pranilshrestha.com.np" class="btn-primary inline-block">
+                <i class="fas fa-paper-plane mr-2"></i>Send Me an Email
+            </a>
+        </div>
+    </section>
+
     <!-- Footer section -->
-    <footer class="bg-gray-900 text-center py-8 relative z-10">
-        <div id="copyright" class="text-gray-400"></div>
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="footer-content">
+                <div class="footer-social" id="footer-social-links">
+                    <!-- Social links will be dynamically loaded -->
+                </div>
+                <div id="copyright" class="footer-copyright"></div>
+                <div class="footer-note">
+                    <p>Built with <i class="fas fa-heart text-accent"></i> using vanilla JavaScript</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Project Detail Page -->
+    <div class="project-detail-page" id="project-detail-page">
+        <div class="project-detail-header">
+            <h2 class="text-2xl font-bold text-accent" id="project-detail-header-title"></h2>
+            <button class="project-detail-close" id="project-detail-close">
+                <i class="fas fa-times mr-2"></i>Close
+            </button>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-images">
+                <div class="project-main-image" id="project-main-image">
+                    <!-- Main image displayed here -->
+                </div>
+                <div class="project-carousel">
+                    <div class="project-carousel-track" id="project-carousel-track">
+                        <!-- Carousel images here -->
+                    </div>
+                    <div class="project-carousel-nav">
+                        <button id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button id="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="project-detail-info">
+                <h1 id="project-detail-title"></h1>
+                <p id="project-detail-description"></p>
+                <div class="project-detail-links">
+                    <a id="project-detail-code" class="code-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>View Code
+                    </a>
+                    <a id="project-detail-demo" class="demo-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./library/custom.js"></script>
 
@@ -135,8 +291,9 @@
     <!-- External JavaScript -->
     <script src="./library/app.js"></script>
 
-    <!-- Nav Script -->
+    <!-- Navigation Script -->
     <script>
+        // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('hidden');
@@ -146,13 +303,51 @@
             navLinks.classList.toggle('top-full');
             navLinks.classList.toggle('left-0');
             navLinks.classList.toggle('right-0');
-            navLinks.classList.toggle('bg-gray-900');
+            navLinks.classList.toggle('bg-dark');
             navLinks.classList.toggle('p-4');
             navLinks.classList.toggle('space-y-4');
+            navLinks.classList.toggle('shadow-xl');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    document.getElementById('mobile-menu-button').click();
+                }
+            });
         });
 
         // Dynamic copyright year
         document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} Pranil Shrestha. All rights reserved.`;
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav-bar');
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-padding').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 

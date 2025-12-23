@@ -1,15 +1,23 @@
 [
     {
-      "image":"./assets/projects/ArtOurs.png",
+      "id": "artours",
+      "images": [
+        "./assets/projects/artours/main.png"
+      ],
       "title": "ArtOurs",
       "description": "Art Buying and Selling Site made Using Django",
+      "fullDescription": "ArtOurs is a comprehensive art marketplace platform built with Django. It enables artists to showcase and sell their artwork while providing art enthusiasts with a seamless browsing and purchasing experience. Features include user authentication, artwork galleries, shopping cart, secure payment integration, and an admin panel for managing listings.",
       "codeLink": "https://github.com/fuunshi/ArtOurs",
       "demoLink": "https://fuunshi.pythonanywhere.com"
     },
     {
-      "image":"./assets/projects/ScrapeData.png",
+      "id": "scrape-data",
+      "images": [
+        "./assets/projects/scrape-data/main.png"
+      ],
       "title": "Share Sansar Data Scrape",
       "description": "Daily Scrapping of data at set time using Scrapy and Github Actions",
+      "fullDescription": "An automated web scraping solution that collects daily stock market data from Share Sansar using Scrapy framework. The project utilizes GitHub Actions for scheduled scraping, ensuring data is collected consistently at set times. The scraped data is processed and stored for analysis, providing valuable insights into market trends.",
       "codeLink": "https://github.com/fuunshi/ShareSansarDataScrape",
       "demoLink": "https://github.com/fuunshi/ShareSansarDataScrape"
     }

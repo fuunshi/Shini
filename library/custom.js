@@ -1,3 +1,9 @@
+/* 
+ * Note: This file loads data from JSON files that are controlled by the site owner.
+ * The JSON files (projects.json, skills.json, etc.) should only be edited by trusted sources.
+ * While some innerHTML usage remains for convenience, ensure JSON data is never user-generated.
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     // Utility function for animation delay
     function setAnimationDelay(elements, baseDelay = 0.1) {
@@ -6,109 +12,346 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Project Section
-    const projectsContainer = document.getElementById('projects-container');
+    // Social Links Section (About page and Footer)
+    function loadSocialLinks() {
+        const aboutContainer = document.getElementById('social-links-container');
+        const footerContainer = document.getElementById('footer-social-links');
 
-    fetch('../json/projects.json')
+        fetch('./json/links.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    // Load social links in About section
+                    data.forEach(link => {
+                        const linkElement = document.createElement('a');
+                        linkElement.href = link.url;
+                        linkElement.target = '_blank';
+                        linkElement.rel = 'noopener noreferrer';
+                        linkElement.classList.add('social-link');
+                        
+                        const icon = document.createElement('i');
+                        icon.className = link.icon;
+                        // Validate color to prevent CSS injection
+                        if (link.color && /^#[0-9A-Fa-f]{3,6}$/.test(link.color)) {
+                            icon.style.color = link.color;
+                        }
+                        
+                        const span = document.createElement('span');
+                        span.textContent = link.name;
+                        
+                        const externalIcon = document.createElement('i');
+                        externalIcon.className = 'fas fa-external-link-alt ml-auto text-sm';
+                        
+                        linkElement.appendChild(icon);
+                        linkElement.appendChild(span);
+                        linkElement.appendChild(externalIcon);
+                        aboutContainer.appendChild(linkElement);
+                    });
+
+                    // Load social links in Footer
+                    data.forEach(link => {
+                        const footerLink = document.createElement('a');
+                        footerLink.href = link.url;
+                        footerLink.target = '_blank';
+                        footerLink.rel = 'noopener noreferrer';
+                        footerLink.title = link.name;
+                        
+                        const footerIcon = document.createElement('i');
+                        footerIcon.className = link.icon;
+                        footerLink.appendChild(footerIcon);
+                        
+                        footerContainer.appendChild(footerLink);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error loading social links from JSON:', error);
+            });
+    }
+
+    loadSocialLinks();
+
+    // Project Section with detail page
+    const projectsContainer = document.getElementById('projects-container');
+    let projectsData = [];
+
+    fetch('./json/projects.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
+                projectsData = data;
                 data.forEach(project => {
                     const projectCard = document.createElement('div');
-                    projectCard.classList.add('project-card', 'animate-fadeInUp');
+                    projectCard.classList.add('project-card');
+                    projectCard.style.cursor = 'pointer';
+                    projectCard.setAttribute('data-project-id', project.id);
+                    
+                    const mainImage = project.images && project.images.length > 0 ? project.images[0] : '';
+                    
                     projectCard.innerHTML = `
-                        <div class="relative overflow-hidden">
-                            <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
-                            <div class="project-overlay flex items-center justify-center">
-                                <div class="space-x-4">
-                                    <a href="${project.codeLink}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105">
-                                        <i class="fab fa-github mr-2"></i>Code
-                                    </a>
-                                    <a href="${project.demoLink}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105">
-                                        <i class="fas fa-external-link-alt mr-2"></i>Demo
-                                    </a>
-                                </div>
+                        <div class="relative">
+                            <img src="${mainImage}" alt="${project.title}">
+                            <div class="project-overlay">
+                                <a href="${project.codeLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>Code
+                                </a>
+                                <a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                                    <i class="fas fa-external-link-alt"></i>Demo
+                                </a>
                             </div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-bold text-xl mb-3 text-blue-400">${project.title}</h3>
-                            <p class="text-gray-300 mb-4">${project.description}</p>
+                            <h3>${project.title}</h3>
+                            <p>${project.description}</p>
                         </div>
                     `;
+                    
+                    // Add click handler to open detail page
+                    projectCard.addEventListener('click', function() {
+                        openProjectDetail(project);
+                    });
+                    
                     projectsContainer.appendChild(projectCard);
                 });
                 
                 setAnimationDelay(document.querySelectorAll('.project-card'));
             } else {
                 document.getElementById('projects').style.display = 'none';
-                document.querySelector('a[href="#projects"]').style.display = 'none';
+                const projectLink = document.querySelector('a[href="#projects"]');
+                if (projectLink) projectLink.style.display = 'none';
             }
         })
         .catch(error => {
-            console.error('Error fetching projects:', error);
+            console.error('Error loading projects from JSON:', error);
             document.getElementById('projects').style.display = 'none';
-            document.querySelector('a[href="#projects"]').style.display = 'none';
+            const projectLink = document.querySelector('a[href="#projects"]');
+            if (projectLink) projectLink.style.display = 'none';
         });
 
-    // Skills Section
-    const skillsContainer = document.getElementById('skills-container');
+    // Project Detail Page Functions
+    let currentCarouselIndex = 0;
+    let carouselInterval = null;
 
-    fetch('../json/skills.json')
+    function openProjectDetail(project) {
+        const detailPage = document.getElementById('project-detail-page');
+        const mainImage = document.getElementById('project-main-image');
+        const carouselTrack = document.getElementById('project-carousel-track');
+        const headerTitle = document.getElementById('project-detail-header-title');
+        const title = document.getElementById('project-detail-title');
+        const description = document.getElementById('project-detail-description');
+        const codeLink = document.getElementById('project-detail-code');
+        const demoLink = document.getElementById('project-detail-demo');
+
+        // Set content
+        headerTitle.textContent = project.title;
+        title.textContent = project.title;
+        description.textContent = project.fullDescription || project.description;
+        codeLink.href = project.codeLink;
+        demoLink.href = project.demoLink;
+
+        // Clear and set images
+        mainImage.innerHTML = '';
+        carouselTrack.innerHTML = '';
+        
+        if (project.images && project.images.length > 0) {
+            // Set main image
+            const mainImg = document.createElement('img');
+            mainImg.src = project.images[0];
+            mainImg.alt = project.title;
+            mainImage.appendChild(mainImg);
+
+            // Create carousel items
+            project.images.forEach((imageSrc, index) => {
+                const carouselItem = document.createElement('div');
+                carouselItem.classList.add('project-carousel-item');
+                if (index === 0) carouselItem.classList.add('active');
+                
+                const carouselImg = document.createElement('img');
+                carouselImg.src = imageSrc;
+                carouselImg.alt = `${project.title} - Image ${index + 1}`;
+                
+                carouselItem.appendChild(carouselImg);
+                carouselItem.addEventListener('click', () => {
+                    updateMainImage(project.images, index);
+                    updateCarouselActive(index);
+                    currentCarouselIndex = index;
+                });
+                
+                carouselTrack.appendChild(carouselItem);
+            });
+
+            // Start auto-scroll carousel
+            currentCarouselIndex = 0;
+            startCarouselAutoScroll(project.images);
+        }
+
+        // Show detail page
+        detailPage.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateMainImage(images, index) {
+        const mainImage = document.getElementById('project-main-image');
+        mainImage.innerHTML = '';
+        const mainImg = document.createElement('img');
+        mainImg.src = images[index];
+        mainImg.alt = `Project Image ${index + 1}`;
+        mainImage.appendChild(mainImg);
+    }
+
+    function updateCarouselActive(index) {
+        const carouselItems = document.querySelectorAll('.project-carousel-item');
+        carouselItems.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    function startCarouselAutoScroll(images) {
+        if (images.length <= 1) return;
+        
+        stopCarouselAutoScroll();
+        carouselInterval = setInterval(() => {
+            currentCarouselIndex = (currentCarouselIndex + 1) % images.length;
+            updateMainImage(images, currentCarouselIndex);
+            updateCarouselActive(currentCarouselIndex);
+        }, 3000);
+    }
+
+    function stopCarouselAutoScroll() {
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
+            carouselInterval = null;
+        }
+    }
+
+    function closeProjectDetail() {
+        const detailPage = document.getElementById('project-detail-page');
+        detailPage.classList.remove('active');
+        document.body.style.overflow = '';
+        stopCarouselAutoScroll();
+    }
+
+    // Project detail close button
+    document.getElementById('project-detail-close').addEventListener('click', closeProjectDetail);
+
+    // Carousel navigation
+    document.getElementById('carousel-prev').addEventListener('click', () => {
+        const images = projectsData.find(p => p.id === document.getElementById('project-detail-header-title').textContent.toLowerCase())?.images || [];
+        if (images.length > 0) {
+            currentCarouselIndex = (currentCarouselIndex - 1 + images.length) % images.length;
+            updateMainImage(images, currentCarouselIndex);
+            updateCarouselActive(currentCarouselIndex);
+            stopCarouselAutoScroll();
+            startCarouselAutoScroll(images);
+        }
+    });
+
+    document.getElementById('carousel-next').addEventListener('click', () => {
+        const images = projectsData.find(p => p.id === document.getElementById('project-detail-header-title').textContent.toLowerCase())?.images || [];
+        if (images.length > 0) {
+            currentCarouselIndex = (currentCarouselIndex + 1) % images.length;
+            updateMainImage(images, currentCarouselIndex);
+            updateCarouselActive(currentCarouselIndex);
+            stopCarouselAutoScroll();
+            startCarouselAutoScroll(images);
+        }
+    });
+
+    // Skills Section with modal
+    const skillsContainer = document.getElementById('skills-container');
+    const skillsGrid = document.getElementById('skills-grid');
+    let allSkills = [];
+
+    fetch('./json/skills.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
-                // Duplicate the skills array for seamless loop
+            if (data && data.length > 0) {
+                allSkills = data;
+                
+                // Duplicate the skills array for seamless loop in carousel
                 const duplicatedData = [...data, ...data];
                 
                 duplicatedData.forEach(skill => {
                     const skillDiv = document.createElement('div');
-                    skillDiv.classList.add('skill-icon', 'animate-fadeInUp', 'p-4');
-                    
-                    const skillImg = document.createElement('img');
-                    skillImg.classList.add('h-20', 'w-20', 'mx-auto');
-                    skillImg.src = skill.url;
-                    skillImg.alt = skill.name;
-                    
-                    const skillName = document.createElement('p');
-                    skillName.classList.add('text-center', 'mt-2', 'text-sm', 'text-gray-300');
-                    skillName.textContent = skill.name;
-                    
-                    skillDiv.appendChild(skillImg);
-                    skillDiv.appendChild(skillName);
+                    skillDiv.classList.add('skill-icon');
+                    skillDiv.innerHTML = `
+                        <img src="${skill.url}" alt="${skill.name}">
+                        <p>${skill.name}</p>
+                    `;
                     skillsContainer.appendChild(skillDiv);
+                });
+                
+                // Populate skills grid for modal (without duplication)
+                data.forEach(skill => {
+                    const skillDiv = document.createElement('div');
+                    skillDiv.classList.add('skill-icon');
+                    skillDiv.innerHTML = `
+                        <img src="${skill.url}" alt="${skill.name}">
+                        <p>${skill.name}</p>
+                    `;
+                    skillsGrid.appendChild(skillDiv);
                 });
                 
                 setAnimationDelay(document.querySelectorAll('.skill-icon'));
             } else {
                 document.getElementById('skills').style.display = 'none';
-                document.querySelector('a[href="#skills"]').style.display = 'none';
+                const skillsLink = document.querySelector('a[href="#skills"]');
+                if (skillsLink) skillsLink.style.display = 'none';
             }
         })
         .catch(error => {
-            console.error('Error fetching skills:', error);
+            console.error('Error loading skills from JSON:', error);
             document.getElementById('skills').style.display = 'none';
-            document.querySelector('a[href="#skills"]').style.display = 'none';
+            const skillsLink = document.querySelector('a[href="#skills"]');
+            if (skillsLink) skillsLink.style.display = 'none';
         });
+
+    // Skills Modal Functions
+    const skillsModal = document.getElementById('skills-modal');
+    const skillsExpandBtn = document.getElementById('skills-expand-btn');
+    const skillsModalClose = document.getElementById('skills-modal-close');
+
+    skillsExpandBtn.addEventListener('click', () => {
+        skillsModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    skillsModalClose.addEventListener('click', () => {
+        skillsModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside content
+    skillsModal.addEventListener('click', (e) => {
+        if (e.target === skillsModal) {
+            skillsModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 
     // Experiences Section
     const experiencesContainer = document.getElementById('experiences-container');
 
-    fetch('../json/experiences.json')
+    fetch('./json/experiences.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 data.forEach(experience => {
                     const experienceCard = document.createElement('div');
-                    experienceCard.classList.add('timeline-item', 'animate-fadeInUp');
+                    experienceCard.classList.add('timeline-item');
                     experienceCard.innerHTML = `
                         <div class="timeline-content">
                             <div class="timeline-date">${experience.from} - ${experience.to}</div>
-                            <h3 class="font-bold text-xl mb-2 text-blue-400">${experience.title}</h3>
-                            <p class="text-gray-300 mb-4">${experience.compName}</p>
+                            <h3>${experience.title}</h3>
+                            <p>${experience.compName}</p>
                             <div class="space-y-2">
                                 ${experience.description.map(point => `
-                                    <p class="text-gray-400 flex items-start">
-                                        <span class="text-blue-400 mr-2">▹</span>
+                                    <p>
+                                        <span>▹</span>
                                         ${point.substring(2)}
                                     </p>
                                 `).join('')}
@@ -121,35 +364,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 setAnimationDelay(document.querySelectorAll('.timeline-item'));
             } else {
                 document.getElementById('experiences').style.display = 'none';
-                document.querySelector('a[href="#experiences"]').style.display = 'none';
+                const experiencesLink = document.querySelector('a[href="#experiences"]');
+                if (experiencesLink) experiencesLink.style.display = 'none';
             }
         })
         .catch(error => {
-            console.error('Error fetching experiences:', error);
+            console.error('Error loading experiences from JSON:', error);
             document.getElementById('experiences').style.display = 'none';
-            document.querySelector('a[href="#experiences"]').style.display = 'none';
+            const experiencesLink = document.querySelector('a[href="#experiences"]');
+            if (experiencesLink) experiencesLink.style.display = 'none';
         });
 
     // Certifications Section
     const certificationsContainer = document.getElementById('certifications-container');
 
-    fetch('../json/certifications.json')
+    fetch('./json/certifications.json')
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 data.forEach(certificate => {
                     const certificateCard = document.createElement('div');
-                    certificateCard.classList.add('certification-card', 'animate-fadeInUp');
+                    certificateCard.classList.add('certification-card');
                     certificateCard.innerHTML = `
-                        <div class="relative overflow-hidden">
-                            <img src="${certificate.imgURL}" alt="${certificate.title}" class="w-full h-48 object-cover">
+                        <div class="relative">
+                            <img src="${certificate.imgURL}" alt="${certificate.title}">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 text-blue-400">${certificate.title}</h3>
-                            <p class="text-gray-300 mb-4">${certificate.desc}</p>
-                            <a href="${certificate.imgURL}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105">
-                                <i class="fas fa-certificate mr-2"></i>View Certificate
+                            <h3>${certificate.title}</h3>
+                            <p>${certificate.desc}</p>
+                            <a href="${certificate.imgURL}" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-certificate"></i>View Certificate
                             </a>
                         </div>
                     `;
@@ -159,12 +404,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 setAnimationDelay(document.querySelectorAll('.certification-card'));
             } else {
                 document.getElementById('certifications').style.display = 'none';
-                document.querySelector('a[href="#certifications"]').style.display = 'none';
+                const certificationsLink = document.querySelector('a[href="#certifications"]');
+                if (certificationsLink) certificationsLink.style.display = 'none';
             }
         })
         .catch(error => {
-            console.error('Error fetching certifications:', error);
+            console.error('Error loading certifications from JSON:', error);
             document.getElementById('certifications').style.display = 'none';
-            document.querySelector('a[href="#certifications"]').style.display = 'none';
+            const certificationsLink = document.querySelector('a[href="#certifications"]');
+            if (certificationsLink) certificationsLink.style.display = 'none';
         });
 });
