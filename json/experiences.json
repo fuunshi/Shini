@@ -1,68 +1,65 @@
 [
   {
-    "title": "Backend Developer",
+    "title": "Backend Engineer",
     "compName": "Cynical Technology",
     "href": "https://cynicaltechnology.com/",
-    "logo": "https://cynicaltechnology.com/wp-content/uploads/2019/10/Cynical-logo-1.png",
+    "logo": "./assets/companies/cynical.png",
     "description": [
-      "→ Develop and maintain server-side applications using Node.js.",
-      "→ Design and integrate APIs with internal and third→party services.",
-      "→ Collaborate with front-end developers and security teams.",
-      "→ Ensure code quality through unit testing, code reviews, and best practices.",
-      "→ Handle application deployment on cloud platforms.",
-      "→ Set up CI/CD pipelines and automate deployment workflows.",
-      "→ Monitor application performance and troubleshoot issues proactively.",
-      "→ Follow secure coding practices and integrate security measures into code and deployments.",
-      "→ Maintain documentation for code, deployments, and technical decisions."
+      "→ Owned backend architecture and production operations for Vigile.ai as the primary backend engineer, covering API development, authentication, background processing, deployments, and system reliability.",
+      "→ Designed and maintained a multi-server production architecture with load balancing, dedicated application servers, PostgreSQL and Redis infrastructure, supporting horizontally scalable backend services.",
+      "→ Managed deployments and ongoing maintenance across 3 production projects and the company website, handling server configuration, application releases, troubleshooting, and operational changes.",
+      "→ Integrated Stripe-based subscription and payment system for real-world transactions",
+      "→ Resolved 23+ production issues/hotfixes across authentication, APIs, and background processing workflows, maintaining system stability in live environments.",
+      "→ Collaborated with VAPT engineers to identify and remediate application security vulnerabilities."
     ],
     "from": "May 2025",
     "to": "present"
   },
   {
-    "title": "Advanced AI Trainer Software Development (Full-Stack Developers)",
+    "title": "AI Trainer (Fullstack Developers) - Contract",
     "compName": "Invisible Technologies",
     "href": "https://invisibletech.ai/",
     "logo": "./assets/companies/invisible.png",
     "description": [
-      "→ Conducted AI model data validation, and evaluation to improve AI-generated outputs.",
-      "→ Wrote supporting scripts, unit tests, and validation code to ensure accuracy and reliability of AI results.",
+      "→ Reviewed full-stack implementations, wrote Python unit tests, and provided technical feedback on code quality and correctness.",
+      "→ Conducted AI model data validation and evaluation to improve AI-generated outputs.",
       "→ Collaborated with the global team as part of the company’s on-demand AI talent pool."
     ],
     "from": "March 2025",
-    "to": "present"
+    "to": "Dec 2025"
   },
   {
-    "title": "Junior Backend Developer",
+    "title": "Backend Developer",
     "compName": "Geek Tech Solutions",
     "href": "https://thegtspl.com/",
     "description": [
-      "→ Developed a scalable POS cafe project in Nodejs, Express",
-      "→ Maintained and refactored code in older codebase",
-      "→ Implmeneted Real time chating system using redis and websocket"
+      "→ Built scalable Cafe POS backend; improved performance by 40% using Redis caching and Docker.",
+      "→ Implemented a real-time chat system using Redis and WebSockets.",
+      "→ Maintained and refactored a legacy codebase to improve reliability and maintainability."
     ],
-    "from": "Nov 2024",
-    "to": "May 2025"
+    "from": "Dec 2024",
+    "to": "Apr 2025"
   },
   {
-    "title": "Full Stack Developer",
+    "title": "Fullstack Developer (Freelance)",
     "compName": "Yuwasoft",
     "logo": "./assets/companies/yuwasoft.png",
     "href": "https://yuwasoft.com/",
     "description": [
-      "→ Lead a team and developed a smart accounting using Django",
-      "→ Configured Docker to containerize the application to build and test application quickly",
-      "→ Refactored Code to MERN Stack for better support"
+      "→ Led a team in developing a Django-based smart accounting system.",
+      "→ Developed MERN/Django backend services and optimized database queries, reducing application response times by ~20%.",
+      "→ Containerized the application with Docker to streamline build and test workflows."
     ],
     "from": "Jun 2024",
     "to": "Dec 2024"
   },
   {
-    "title": "Junior Developer",
+    "title": "Software Developer",
     "compName": "Enigma DTS",
     "description": [
-      "→ Contributing to team using Go and React",
-      "→ Improved performance of the application by 20% by optimizing react components",
-      "→ Followed Agile methodology for project management"
+      "→ Built responsive, reusable React components, improving UI consistency and performance.",
+      "→ Improved application performance by 20% by optimizing React component rendering.",
+      "→ Enhanced backend efficiency with Go, speeding up data processing."
     ],
     "from": "Jan 2024",
     "to": "July 2024"
@@ -71,7 +68,7 @@
     "title": "Freelancer",
     "compName": "Freelancer",
     "description": [
-      "→ Developed a website for a local business using Django"
+      "→ Delivered a custom Django website for a local business, owning the build end to end."
     ],
     "from": "Jan 2023",
     "to": "present"

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Pranil Shrestha</title>
+    <meta name="description" content="Every project Pranil Shrestha has built: professional backend work, personal projects and experiments.">
+    <link rel="canonical" href="https://pranilshrestha.com.np/archive/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pranilshrestha.com.np/archive/">
+    <meta property="og:title" content="Project Archive | Pranil Shrestha">
+    <meta property="og:description" content="Every project Pranil Shrestha has built: professional backend work, personal projects and experiments.">
+    <meta property="og:image" content="https://pranilshrestha.com.np/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/utilities.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- External CSS for additional styles -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="bg-dark text-light">
+    <!-- Pointer-following glow -->
+    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar nav-scrolled fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="logo text-2xl font-bold cursor-pointer">
+                    <span class="text-accent">&lt;</span>Pranil<span class="text-accent">/&gt;</span>
+                </a>
+                <a href="../index.html#projects" class="archive-nav-link">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Archive -->
+    <main class="archive-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <header class="archive-page-header">
+                <h1>All <span>Projects</span></h1>
+                <p>
+                    Everything I've built: professional work, personal projects, and the odd experiment.
+                    Each entry links to the live site where one exists, otherwise to the source.
+                </p>
+                <p class="archive-count" id="archive-count"></p>
+            </header>
+
+            <div class="archive-head">
+                <span>Year</span>
+                <span>Project</span>
+                <span>Made at</span>
+                <span>Built with</span>
+                <span>Link</span>
+            </div>
+            <div id="archive-rows">
+                <!-- Archive rows dynamically generated -->
+            </div>
+
+            <a href="../index.html#projects" class="archive-back-link">
+                <i class="fas fa-arrow-left"></i>Back to portfolio
+            </a>
+        </div>
+    </main>
+
+    <script src="../library/archive.js"></script>
+    <script src="../library/cursor-glow.js"></script>
+</body>
+
+</html>

@@ -7,9 +7,16 @@ particlesJS('particles-js',
   {
     "particles": {
       "number": {
-        "value": 80,
+        /* Fixed count, deliberately not density-scaled.
+           Density sizing derives the array length from the canvas size in CSS
+           pixels, so zooming out enlarges the viewport and multiplies the count
+           (a 1400x900 window at 25% zoom becomes 5600x3600 -> ~2000 particles).
+           particlesUpdate() links every pair, which is O(n^2), so that count
+           locks the page. A fixed number keeps the per-frame cost constant no
+           matter the zoom level. */
+        "value": 100,
         "density": {
-          "enable": true,
+          "enable": false,
           "value_area": 800
         }
       },

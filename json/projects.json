@@ -5,10 +5,42 @@
       "./assets/projects/vigile-ai/main.png"
     ],
     "title": "Vigile AI",
-    "description": "Vigile AI is a cutting-edge AI-powered platform designed to monitor and analyze breach data in real-time, providing users with actionable insights and alerts to enhance their security posture.",
-    "fullDescription": "Vigile AI is an advanced security platform that leverages artificial intelligence to monitor and analyze breach data in real-time. The platform is designed to provide users with actionable insights and alerts, helping them to enhance their security posture and respond swiftly to potential threats. Key features include real-time data monitoring, AI-driven analysis, customizable alert systems, and comprehensive reporting tools. Vigile AI aims to empower organizations to stay ahead of cyber threats by providing them with the tools they need to protect their digital assets effectively.",
-    "codeLink": "https://vigile.ai/",
+    "subheader": "Backend Engineer @ Vigile AI Inc.",
+    "year": "2026",
+    "madeAt": "Vigile AI Inc.",
+    "tags": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "AWS"
+    ],
+    "description": "An AI-powered platform for real-time breach-data monitoring, where I work as a Backend Engineer at Vigile AI Inc.",
+    "fullDescription": "Vigile AI is an advanced security platform that leverages artificial intelligence to monitor and analyze breach data in real-time. The platform is designed to provide users with actionable insights and alerts, helping them to enhance their security posture and respond swiftly to potential threats. Key features include real-time data monitoring, AI-driven analysis, customizable alert systems, and comprehensive reporting tools. I work on Vigile AI as a Backend Engineer at Vigile AI Inc., where I own the backend architecture and production operations as the primary backend engineer, covering API development, authentication, background processing, deployments, and system reliability.",
     "demoLink": "https://vigile.ai/"
+  },
+  {
+    "id": "newsbyte",
+    "images": [
+      "./assets/projects/newsbyte/main.png"
+    ],
+    "title": "NewsByte",
+    "subheader": "Personal project",
+    "year": "2025",
+    "tags": [
+      "NestJS",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "RabbitMQ",
+      "Scrapy",
+      "Docker"
+    ],
+    "description": "Automated Nepali and English news aggregation platform with hybrid TF-IDF + TextRank summarization.",
+    "fullDescription": "NewsByte is an automated news aggregation and summarization platform for Nepali and English news portals. Scrapy and Playwright spiders collect articles from Ekantipur and The Kathmandu Post, which flow through RabbitMQ so scraping, summarization, and storage run as parallel pipelines. A hybrid TF-IDF + TextRank algorithm condenses each article to roughly 30% of its original length. The backend is a NestJS API with Prisma over PostgreSQL, exposing JWT-authenticated endpoints with full-text search via tsvector, and the frontend is a responsive React 18 + TypeScript app. Orchestrated with Docker Compose and covered by Jest end-to-end tests.",
+    "codeLink": "https://github.com/fuunshi/newsbyte"
   },
   {
     "id": "artours",
@@ -16,8 +48,15 @@
       "./assets/projects/artours/main.png"
     ],
     "title": "ArtOurs",
-    "description": "Art Buying and Selling Site made Using Django",
-    "fullDescription": "ArtOurs is a comprehensive art marketplace platform built with Django. It enables artists to showcase and sell their artwork while providing art enthusiasts with a seamless browsing and purchasing experience. Features include user authentication, artwork galleries, shopping cart, secure payment integration, and an admin panel for managing listings.",
+    "subheader": "Personal project",
+    "year": "2024",
+    "tags": [
+      "Django",
+      "Python",
+      "Docker"
+    ],
+    "description": "Personal project: a Django e-commerce platform for buying and selling artwork, with a Django admin panel.",
+    "fullDescription": "ArtOurs is a personal project: a full e-commerce platform for buying and selling artwork, built end to end with Django and its templating engine rather than a separate frontend framework. Artists create profiles and list paintings, sculptures, and crafts for sale, while buyers browse and filter listings by medium, style, and price, and commission custom pieces directly from artists. The platform supports multiple user roles, secure transactions, and ratings and reviews, with a Django admin panel for managing users, listings, and orders. Everything is server-rendered with Django views, ORM models, forms, and templates, and containerized with Docker for consistent development and deployment.",
     "codeLink": "https://github.com/fuunshi/ArtOurs",
     "demoLink": "https://fuunshi.pythonanywhere.com"
   },
@@ -27,9 +66,77 @@
       "./assets/projects/scrape-data/main.png"
     ],
     "title": "Share Sansar Data Scrape",
-    "description": "Daily Scrapping of data at set time using Scrapy and Github Actions",
-    "fullDescription": "An automated web scraping solution that collects daily stock market data from Share Sansar using Scrapy framework. The project utilizes GitHub Actions for scheduled scraping, ensuring data is collected consistently at set times. The scraped data is processed and stored for analysis, providing valuable insights into market trends.",
-    "codeLink": "https://github.com/fuunshi/ShareSansarDataScrape",
-    "demoLink": "https://github.com/fuunshi/ShareSansarDataScrape"
+    "subheader": "Personal project",
+    "year": "2024",
+    "tags": [
+      "Python",
+      "Scrapy",
+      "Pandas",
+      "GitHub Actions"
+    ],
+    "description": "Automated Scrapy pipeline capturing daily NEPSE share prices from Share Sansar, scheduled with GitHub Actions.",
+    "fullDescription": "An automated data-collection pipeline that scrapes daily share-price data from Share Sansar's today-share-price page and stores each day as a dated CSV snapshot. Built with Scrapy, with a dedicated spider named market and Pandas handling post-processing. It runs on a schedule through GitHub Actions, so prices are captured every day without manual intervention. The result is a clean, continuously growing dataset of NEPSE market data ready for trend analysis.",
+    "codeLink": "https://github.com/fuunshi/ShareSansarDataScrape"
+  },
+  {
+    "id": "neurox",
+    "images": [
+      "./assets/projects/neurox/main.png"
+    ],
+    "title": "Neurox",
+    "subheader": "Personal project",
+    "year": "2026",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "BullMQ",
+      "Python",
+      "spaCy",
+      "Docker"
+    ],
+    "description": "Turns your own study material into flashcards, quizzes and summaries, with no language model.",
+    "fullDescription": "Neurox turns your own study material into review cards: you bring the text, it drafts flashcards, multiple-choice questions, cloze deletions, keywords and summaries, and you keep the ones worth remembering. It runs as three services: a Next.js app-router front end, a NestJS API on Fastify with PostgreSQL via MikroORM and Redis/BullMQ handling email and background card generation, and a Python service that does the generation itself. That service deliberately avoids a language model: spaCy for parsing, TF-IDF for keywords, TextRank for summarisation, WordNet for synonym checks and dependency patterns for definitions, so it runs on a small VPS, costs nothing per call and works with no network access. The backend deploys as two runtimes from one codebase: an HTTP API and a queue worker."
+  },
+  {
+    "id": "netgap",
+    "images": [
+      "./assets/projects/netgap/main.png"
+    ],
+    "title": "Netgap",
+    "subheader": "Personal project",
+    "year": "2026",
+    "tags": [
+      "Rust",
+      "tokio",
+      "SQLite",
+      "Networking",
+      "Security"
+    ],
+    "description": "A network security scanner in Rust: discovers devices, fingerprints them and rates their exposures.",
+    "fullDescription": "Netgap is a network security scanner written in Rust, built as a workspace of focused crates rather than a single binary. It discovers devices on a local network with ARP scanning, probes for exposed or weakly configured services such as Telnet, FTP, SMB and SNMP, then fingerprints each host through MAC OUI lookups, TTL-based OS detection and banner grabbing. Findings are scored and persisted to SQLite, so scan history can be compared over time to see exactly what changed on a network between runs, and results export as terminal output, JSON, Markdown, HTML or CSV."
+  },
+  {
+    "id": "clarity",
+    "images": [
+      "./assets/projects/clarity/main.png"
+    ],
+    "title": "Clarity",
+    "subheader": "Backend @ Team Clarity",
+    "year": "2025",
+    "madeAt": "CodeFest Hackathon 2025",
+    "tags": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "Python"
+    ],
+    "description": "Food nutrition analysis platform: scan a product, get advice matched to your health profile.",
+    "fullDescription": "Clarity is a mobile app that scans food products by barcode or OCR and turns the nutritional label into advice matched to the person holding the phone, checked against their health conditions, allergies and dietary preferences, with consumption tracked over time. Built by Team Clarity at CodeFest Hackathon 2025, where I worked on the backend: a NestJS REST API over PostgreSQL with Prisma, serving the product data and the personalised analysis the app renders. The rest of the team built the React Native (Expo) front end with English and Nepali localisation, and the Python service that structures scanned product data."
   }
 ]

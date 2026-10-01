@@ -1174,6 +1174,13 @@ var pJS = function(tag_id, params){
       /* calc number of particles based on density area */
       var nb_particles = area * pJS.particles.number.value / pJS.particles.number.density.value_area;
 
+      /* Safety cap. Linking particles is O(n^2) per frame, so an unbounded
+         count (zooming out grows the viewport, firing resize -> this function)
+         locks the page. Density is disabled in app.js; this guards against it
+         being re-enabled. */
+      var max_particles = pJS.particles.number.density.max || 150;
+      if(nb_particles > max_particles) nb_particles = max_particles;
+
       /* add or remove X particles */
       var missing_particles = pJS.particles.array.length - nb_particles;
       if(missing_particles < 0) pJS.fn.modes.pushParticles(Math.abs(missing_particles));

@@ -1,87 +1,70 @@
 [
-    {
-        "name":"python",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
-    },
-    {
-        "name": "javascript",
-        "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-    },
-    {
-        "name": "django",
-        "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
-    },
-    {
-        "name": "react",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
-    },
-    {
-        "name": "tailwindcss",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg"
-    },
-    {
-        "name": "fastapi",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original-wordmark.svg"
-    },
-    {
-        "name": "git",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain-wordmark.svg"
-    },
-    {
-        "name": "bash",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg"
-    },
-    {
-        "name": "postgresql",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain-wordmark.svg"
-    },
-    {
-        "name": "Node.js",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
-    },
-    {
-        "name": "express",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
-    },
-    {
-        "name": "django-channels",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
-    },
-    {
-        "name": "docker",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain-wordmark.svg"
-    },
-    {
-        "name": "fastify",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastify/fastify-original-wordmark.svg"
-    },
-    {
-        "name": "nestjs",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg"
-    },
-    {
-        "name": "bullmq",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
-    },
-    {
-        "name": "redis",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original-wordmark.svg"
-    },
-    {
-        "name": "nginx",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg"
-    },
-    {
-        "name": "aws",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-    },
-    {
-        "name": "azure",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
-    },
-    {
-        "name": "postman",
-        "url":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original-wordmark.svg"
-    }
-
+  {
+    "group": "Languages",
+    "items": [
+      { "name": "TypeScript", "primary": true },
+      { "name": "Python", "primary": true },
+      { "name": "JavaScript", "primary": false },
+      { "name": "SQL", "primary": false },
+      { "name": "Bash", "primary": false }
+    ]
+  },
+  {
+    "group": "Backend",
+    "items": [
+      { "name": "Node.js", "primary": true },
+      { "name": "NestJS", "primary": true },
+      { "name": "Django", "primary": true },
+      { "name": "Fastify", "primary": false },
+      { "name": "FastAPI", "primary": false },
+      { "name": "Express", "primary": false }
+    ]
+  },
+  {
+    "group": "Data & Messaging",
+    "items": [
+      { "name": "PostgreSQL", "primary": true },
+      { "name": "Redis", "primary": true },
+      { "name": "RabbitMQ", "primary": true },
+      { "name": "BullMQ", "primary": false },
+      { "name": "Prisma", "primary": false },
+      { "name": "MongoDB", "primary": false }
+    ]
+  },
+  {
+    "group": "Infrastructure & DevOps",
+    "items": [
+      { "name": "Docker", "primary": true },
+      { "name": "AWS (EC2, RDS)", "primary": true },
+      { "name": "CI/CD", "primary": true },
+      { "name": "Nginx", "primary": false },
+      { "name": "PM2", "primary": false },
+      { "name": "Linux", "primary": false },
+      { "name": "Load balancing", "primary": false }
+    ]
+  },
+  {
+    "group": "Security",
+    "items": [
+      { "name": "OWASP Top 10", "primary": true },
+      { "name": "Secure coding", "primary": false }
+    ]
+  },
+  {
+    "group": "Integrations",
+    "items": [
+      { "name": "Stripe", "primary": true },
+      { "name": "Webhooks", "primary": false },
+      { "name": "GitLab", "primary": false },
+      { "name": "Microsoft Graph", "primary": false }
+    ]
+  },
+  {
+    "group": "Frontend",
+    "items": [
+      { "name": "React", "primary": true },
+      { "name": "Next.js", "primary": false },
+      { "name": "Tailwind", "primary": false }
+    ]
+  }
 ]

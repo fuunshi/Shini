@@ -75,12 +75,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectsContainer = document.getElementById('projects-container');
     let projectsData = [];
 
+    // The grid holds six projects; the rest are listed on the archive page.
+    const ARCHIVE_THRESHOLD = 6;
+
     fetch('./json/projects.json')
         .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {
                 projectsData = data;
-                data.forEach(project => {
+
+                // Once there are more projects than the grid holds, the overflow is
+                // listed in the archive below it.
+                const showArchive = data.length > ARCHIVE_THRESHOLD;
+                const gridProjects = showArchive ? data.slice(0, ARCHIVE_THRESHOLD) : data;
+
+                gridProjects.forEach(project => {
                     const projectCard = document.createElement('div');
                     projectCard.classList.add('project-card');
                     projectCard.style.cursor = 'pointer';
@@ -88,33 +97,61 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                     const mainImage = project.images && project.images.length > 0 ? project.images[0] : '';
                     
+                    // Only render the links a project actually has
+                    let overlayHTML = '';
+                    if (project.codeLink) {
+                        overlayHTML += `
+                                <a href="${escapeHtml(project.codeLink)}" class="overlay-code-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>Code
+                                </a>`;
+                    }
+                    if (project.demoLink) {
+                        overlayHTML += `
+                                <a href="${escapeHtml(project.demoLink)}" class="overlay-site-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                                    <i class="fas fa-external-link-alt"></i>Live Site
+                                </a>`;
+                    }
+
+                    const tagsHTML = (project.tags && project.tags.length)
+                        ? `<div class="project-tags">${project.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div>`
+                        : '';
+
                     projectCard.innerHTML = `
                         <div class="relative">
-                            <img src="${mainImage}" alt="${project.title}">
-                            <div class="project-overlay">
-                                <a href="${project.codeLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github"></i>Code
-                                </a>
-                                <a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
-                                    <i class="fas fa-external-link-alt"></i>Demo
-                                </a>
-                            </div>
+                            <img src="${mainImage}" alt="${escapeHtml(project.title)}">
+                            ${overlayHTML ? `<div class="project-overlay">${overlayHTML}</div>` : ''}
                         </div>
                         <div class="p-6">
-                            <h3>${project.title}</h3>
-                            <p>${project.description}</p>
+                            <h3><button type="button" class="project-title-btn">${escapeHtml(project.title)}</button></h3>
+                            ${project.subheader ? `<p class="project-subheader">${escapeHtml(project.subheader)}</p>` : ''}
+                            <p>${escapeHtml(project.description)}</p>
+                            ${tagsHTML}
                         </div>
                     `;
                     
                     // Add click handler to open detail page
-                    projectCard.addEventListener('click', function() {
-                        openProjectDetail(project);
+                    // Mouse: the whole card opens the detail. Keyboard: the title button
+                    // does, so it stays reachable without nesting controls inside a button.
+                    projectCard.addEventListener('click', function () {
+                        openProjectDetail(project, projectCard);
+                    });
+
+                    const titleBtn = projectCard.querySelector('.project-title-btn');
+                    titleBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        openProjectDetail(project, titleBtn);
                     });
                     
                     projectsContainer.appendChild(projectCard);
                 });
                 
                 setAnimationDelay(document.querySelectorAll('.project-card'));
+
+                if (showArchive) {
+                    // Point the grid at the full archive once it overflows
+                    const archiveLink = document.getElementById('projects-archive-link');
+                    if (archiveLink) archiveLink.hidden = false;
+                }
             } else {
                 document.getElementById('projects').style.display = 'none';
                 const projectLink = document.querySelector('a[href="#projects"]');
@@ -131,23 +168,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // Project Detail Page Functions
     let currentCarouselIndex = 0;
     let carouselInterval = null;
+    let lastFocusedElement = null;
 
-    function openProjectDetail(project) {
+    function openProjectDetail(project, trigger) {
         const detailPage = document.getElementById('project-detail-page');
         const mainImage = document.getElementById('project-main-image');
         const carouselTrack = document.getElementById('project-carousel-track');
         const headerTitle = document.getElementById('project-detail-header-title');
         const title = document.getElementById('project-detail-title');
+        const subheader = document.getElementById('project-detail-subheader');
         const description = document.getElementById('project-detail-description');
         const codeLink = document.getElementById('project-detail-code');
         const demoLink = document.getElementById('project-detail-demo');
+        const tagsContainer = document.getElementById('project-detail-tags');
 
         // Set content
         headerTitle.textContent = project.title;
         title.textContent = project.title;
+        subheader.textContent = project.subheader || '';
+        subheader.style.display = project.subheader ? '' : 'none';
         description.textContent = project.fullDescription || project.description;
-        codeLink.href = project.codeLink;
-        demoLink.href = project.demoLink;
+        // Only show the links this project actually has
+        codeLink.style.display = project.codeLink ? '' : 'none';
+        if (project.codeLink) codeLink.href = project.codeLink;
+        demoLink.style.display = project.demoLink ? '' : 'none';
+        if (project.demoLink) demoLink.href = project.demoLink;
+
+        tagsContainer.innerHTML = (project.tags || []).map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
+        tagsContainer.style.display = (project.tags && project.tags.length) ? '' : 'none';
 
         // Clear and set images
         mainImage.innerHTML = '';
@@ -186,8 +234,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Show detail page
+        lastFocusedElement = trigger || document.activeElement;
         detailPage.classList.add('active');
+        detailPage.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        document.getElementById('project-detail-close').focus();
     }
 
     function updateMainImage(images, index) {
@@ -231,12 +282,26 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeProjectDetail() {
         const detailPage = document.getElementById('project-detail-page');
         detailPage.classList.remove('active');
+        detailPage.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         stopCarouselAutoScroll();
+        // Return focus to whatever opened the dialog
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+            lastFocusedElement = null;
+        }
     }
 
     // Project detail close button
     document.getElementById('project-detail-close').addEventListener('click', closeProjectDetail);
+
+    // Escape closes the detail dialog
+    document.addEventListener('keydown', function (e) {
+        const detailPage = document.getElementById('project-detail-page');
+        if (e.key === 'Escape' && detailPage.classList.contains('active')) {
+            closeProjectDetail();
+        }
+    });
 
     // Carousel navigation
     document.getElementById('carousel-prev').addEventListener('click', () => {
@@ -261,42 +326,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Skills Section with modal
-    const skillsContainer = document.getElementById('skills-container');
-    const skillsGrid = document.getElementById('skills-grid');
-    let allSkills = [];
+    // Skills Section
+    const skillsList = document.getElementById('skills-list');
 
     fetch('./json/skills.json')
         .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {
-                allSkills = data;
-                
-                // Duplicate the skills array for seamless loop in carousel
-                const duplicatedData = [...data, ...data];
-                
-                duplicatedData.forEach(skill => {
-                    const skillDiv = document.createElement('div');
-                    skillDiv.classList.add('skill-icon');
-                    skillDiv.innerHTML = `
-                        <img src="${skill.url}" alt="${skill.name}">
-                        <p>${skill.name}</p>
+                data.forEach(group => {
+                    const row = document.createElement('div');
+                    row.classList.add('skill-group');
+
+                    const itemsHTML = (group.items || []).map(item =>
+                        `<span class="skill-item${item.primary ? ' primary' : ''}">${escapeHtml(item.name)}</span>`
+                    ).join('');
+
+                    row.innerHTML = `
+                        <h3 class="skill-group-label">${escapeHtml(group.group)}</h3>
+                        <div class="skill-items">${itemsHTML}</div>
                     `;
-                    skillsContainer.appendChild(skillDiv);
+                    skillsList.appendChild(row);
                 });
-                
-                // Populate skills grid for modal (without duplication)
-                data.forEach(skill => {
-                    const skillDiv = document.createElement('div');
-                    skillDiv.classList.add('skill-icon');
-                    skillDiv.innerHTML = `
-                        <img src="${skill.url}" alt="${skill.name}">
-                        <p>${skill.name}</p>
-                    `;
-                    skillsGrid.appendChild(skillDiv);
-                });
-                
-                setAnimationDelay(document.querySelectorAll('.skill-icon'));
+
+                setAnimationDelay(document.querySelectorAll('.skill-group'));
             } else {
                 document.getElementById('skills').style.display = 'none';
                 const skillsLink = document.querySelector('a[href="#skills"]');
@@ -309,29 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const skillsLink = document.querySelector('a[href="#skills"]');
             if (skillsLink) skillsLink.style.display = 'none';
         });
-
-    // Skills Modal Functions
-    const skillsModal = document.getElementById('skills-modal');
-    const skillsExpandBtn = document.getElementById('skills-expand-btn');
-    const skillsModalClose = document.getElementById('skills-modal-close');
-
-    skillsExpandBtn.addEventListener('click', () => {
-        skillsModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-
-    skillsModalClose.addEventListener('click', () => {
-        skillsModal.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close modal when clicking outside content
-    skillsModal.addEventListener('click', (e) => {
-        if (e.target === skillsModal) {
-            skillsModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
 
     // Experiences Section
     const experiencesContainer = document.getElementById('experiences-container');

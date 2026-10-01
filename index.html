@@ -5,9 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranil Shrestha - Software Developer & Security Enthusiast</title>
+    <title>Pranil Shrestha | Backend Engineer</title>
+    <meta name="description" content="Pranil Shrestha is a backend engineer in Kathmandu working across TypeScript, Node.js, PostgreSQL, Redis, Docker and AWS.">
+    <link rel="canonical" href="https://pranilshrestha.com.np/">
+
+    <!-- Social preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pranilshrestha.com.np/">
+    <meta property="og:title" content="Pranil Shrestha | Backend Engineer">
+    <meta property="og:description" content="Backend engineer in Kathmandu working across TypeScript, Node.js, PostgreSQL, Redis, Docker and AWS.">
+    <meta property="og:image" content="https://pranilshrestha.com.np/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pranil Shrestha | Backend Engineer">
+    <meta name="twitter:description" content="Backend engineer in Kathmandu working across TypeScript, Node.js, PostgreSQL, Redis, Docker and AWS.">
+    <meta name="twitter:image" content="https://pranilshrestha.com.np/assets/og-image.png">
+
     <!-- External CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link
@@ -15,6 +31,36 @@
         rel="stylesheet">
     <!-- External CSS for additional styles -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Pranil Shrestha",
+            "jobTitle": "Backend Engineer",
+            "url": "https://pranilshrestha.com.np/",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Kathmandu",
+                "addressCountry": "NP"
+            },
+            "sameAs": [
+                "https://www.github.com/fuunshi",
+                "https://www.linkedin.com/in/pranil-shrestha"
+            ],
+            "knowsAbout": [
+                "Backend Engineering",
+                "TypeScript",
+                "Node.js",
+                "PostgreSQL",
+                "Redis",
+                "Docker",
+                "AWS",
+                "Application Security"
+            ]
+        }
+    </script>
 </head>
 
 <body class="bg-dark text-light">
@@ -25,8 +71,9 @@
                 <a href="#hero" class="logo text-2xl font-bold cursor-pointer">
                     <span class="text-accent">&lt;</span>Pranil<span class="text-accent">/&gt;</span>
                 </a>
-                <button id="mobile-menu-button" class="md:hidden text-2xl hover:text-accent transition-colors duration-300">
-                    <i class="fas fa-bars"></i>
+                <button id="mobile-menu-button" class="md:hidden text-2xl hover:text-accent transition-colors duration-300"
+                    aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
                 <div id="nav-links" class="hidden md:flex items-center md:space-x-8">
                     <a href="#about" class="nav-link">About</a>
@@ -46,6 +93,9 @@
     <!-- Particle.js background -->
     <div id="particles-js" class="particles-bg"></div>
 
+    <!-- Pointer-following glow -->
+    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="max-w-7xl mx-auto px-6">
@@ -58,11 +108,10 @@
                         Pranil Shrestha
                     </h1>
                     <h2 class="hero-title fade-in-up delay-2">
-                        Software Developer & Security Enthusiast
+                        Backend Engineer
                     </h2>
                     <p class="hero-description fade-in-up delay-3">
-                        Passionate about building secure, scalable applications and solving complex problems. 
-                        Specializing in full-stack development with a focus on cybersecurity.
+                        I build backend systems that hold up.
                     </p>
                     <div class="hero-cta fade-in-up delay-4">
                         <a href="#projects" class="btn-primary mr-4">
@@ -91,49 +140,22 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="about-text">
                     <p class="mb-4 text-light-secondary">
-                        I'm a passionate software developer based in Nepal with expertise in building scalable, 
-                        secure backend systems and full-stack applications. My journey in tech is driven by 
-                        curiosity and a commitment to crafting efficient, user-centric solutions.
+                        I'm a backend engineer based in Kathmandu with 2+ years of experience. Most of my work
+                        is in TypeScript, Node.js and Python, and the parts I enjoy most are the ones you only
+                        notice when something goes wrong.
                     </p>
                     <p class="mb-4 text-light-secondary">
-                        Currently working as a Backend Developer at Cynical Technology, I specialize in Node.js, 
-                        Python, and modern web technologies. I'm also part of the AI talent pool at Invisible 
-                        Technologies, where I contribute to advanced AI training and validation projects. With 
-                        experience across multiple companies, I've delivered projects ranging from POS systems 
-                        to real-time chat applications and smart accounting solutions.
+                        I like systems that are boring to operate. Predictable deploys, clear failure modes,
+                        and data you can trust. I'd rather understand why something broke than patch over it,
+                        and I write for the person who reads the code next. Working close to security shapes
+                        how I design: I tend to ask how a thing fails before I ask how it ships.
                     </p>
                     <p class="mb-6 text-light-secondary">
-                        Beyond coding, I'm deeply interested in cybersecurity, continuously honing my skills 
-                        through platforms like TryHackMe. I believe in giving back to the community through 
-                        open-source contributions and sharing knowledge with fellow developers.
+                        Outside of client work I build things end to end. Most recently a study platform that
+                        turns notes into flashcards using classical NLP instead of a language model, and a
+                        network security scanner written in Rust. Security is the thread I keep pulling on,
+                        and it's what I read about in my own time.
                     </p>
-                    <h3 class="text-xl font-bold mb-4 text-accent">Technologies I work with:</h3>
-                    <div class="tech-list grid grid-cols-2 gap-3">
-                        <div class="tech-item">
-                            <i class="fas fa-angle-right text-accent mr-2"></i>
-                            <span>Python & Django</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-angle-right text-accent mr-2"></i>
-                            <span>JavaScript & Node.js</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-angle-right text-accent mr-2"></i>
-                            <span>React & Express</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-angle-right text-accent mr-2"></i>
-                            <span>PostgreSQL & Redis</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-angle-right text-accent mr-2"></i>
-                            <span>Docker & Git</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-angle-right text-accent mr-2"></i>
-                            <span>Cybersecurity</span>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-links">
                     <div class="card">
@@ -153,29 +175,11 @@
             <h2 class="section-title">
                 <span class="text-accent">02.</span> Skills & Technologies
             </h2>
-            <div class="skills-carousel">
-                <div class="skills-track" id="skills-container">
-                    <!-- Skill icons dynamically generated -->
-                </div>
+            <div class="skills-list" id="skills-list">
+                <!-- Skill groups dynamically generated -->
             </div>
-            <button class="skills-expand-btn" id="skills-expand-btn">
-                <i class="fas fa-expand-alt mr-2"></i>View All Skills
-            </button>
         </div>
     </section>
-
-    <!-- Skills Modal -->
-    <div class="skills-modal" id="skills-modal">
-        <div class="skills-modal-content">
-            <button class="skills-modal-close" id="skills-modal-close">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="text-3xl font-bold text-accent mb-4">All Skills & Technologies</h2>
-            <div class="skills-grid" id="skills-grid">
-                <!-- All skills displayed here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Experience Section -->
     <section id="experiences" class="section-padding">
@@ -199,6 +203,13 @@
             </h2>
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project cards dynamically generated -->
+            </div>
+
+            <!-- Link to the full archive, revealed once the grid fills up -->
+            <div class="projects-archive-link" id="projects-archive-link" hidden>
+                <a href="./archive/">
+                    View Full Project Archive <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -248,7 +259,8 @@
     </footer>
 
     <!-- Project Detail Page -->
-    <div class="project-detail-page" id="project-detail-page">
+    <div class="project-detail-page" id="project-detail-page" role="dialog" aria-modal="true"
+        aria-labelledby="project-detail-title" aria-hidden="true">
         <div class="project-detail-header">
             <h2 class="text-2xl font-bold text-accent" id="project-detail-header-title"></h2>
             <button class="project-detail-close" id="project-detail-close">
@@ -272,13 +284,15 @@
             </div>
             <div class="project-detail-info">
                 <h1 id="project-detail-title"></h1>
+                <p id="project-detail-subheader" class="project-detail-subheader"></p>
                 <p id="project-detail-description"></p>
+                <div id="project-detail-tags" class="project-tags"></div>
                 <div class="project-detail-links">
                     <a id="project-detail-code" class="code-link" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i>View Code
                     </a>
                     <a id="project-detail-demo" class="demo-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                        <i class="fas fa-external-link-alt"></i>Live Site
                     </a>
                 </div>
             </div>
@@ -286,6 +300,7 @@
     </div>
 
     <script src="./library/custom.js"></script>
+    <script src="./library/cursor-glow.js"></script>
 
     <!-- Particle.js library -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -297,6 +312,7 @@
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const navLinks = document.getElementById('nav-links');
+            this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
             navLinks.classList.toggle('hidden');
             navLinks.classList.toggle('flex');
             navLinks.classList.toggle('flex-col');

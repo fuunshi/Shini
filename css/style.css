@@ -8,7 +8,7 @@
     --bg-dark-secondary: #112240;
     --bg-dark-accent: #172a45;
     --text-light: #ccd6f6;
-    --text-light-secondary: #8892b0;
+    --text-light-secondary: #94a3c4;
     --accent-primary: #64ffda;
     --accent-secondary: #64ffda;
     --accent-hover: #52e8c4;
@@ -176,6 +176,31 @@ body {
     opacity: 0.5;
 }
 
+/* Pointer-following glow */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    margin: -300px 0 0 -300px;
+    border-radius: 50%;
+    pointer-events: none;
+    /* above the section backgrounds (z-index 10), below the nav (z-index 50) */
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(circle,
+            rgba(100, 255, 218, 0.10) 0%,
+            rgba(100, 255, 218, 0.05) 35%,
+            rgba(100, 255, 218, 0) 68%);
+    will-change: transform;
+}
+
+.cursor-glow.is-visible {
+    opacity: 1;
+}
+
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
@@ -332,17 +357,6 @@ body {
     font-size: 1.125rem;
 }
 
-.tech-list {
-    font-family: 'Fira Code', monospace;
-}
-
-.tech-item {
-    display: flex;
-    align-items: center;
-    color: var(--text-light-secondary);
-    font-size: 0.95rem;
-}
-
 /* Social Links in About */
 #social-links-container .social-link {
     display: flex;
@@ -371,143 +385,51 @@ body {
 }
 
 /* Skills Carousel */
-.skills-carousel {
-    position: relative;
-    overflow: hidden;
-    padding: 2rem 0;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.skills-expand-btn {
-    display: block;
-    margin: 2rem auto 0;
-    padding: 0.875rem 2rem;
-    background: transparent;
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary);
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 1rem;
-}
-
-.skills-expand-btn:hover {
-    background: var(--accent-primary);
-    color: var(--bg-dark);
-    transform: translateY(-2px);
-}
-
-.skills-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(10, 25, 47, 0.95);
-    z-index: 1000;
-    padding: 2rem;
-    overflow-y: auto;
-}
-
-.skills-modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.skills-modal-content {
-    background: var(--bg-dark-secondary);
-    border: 1px solid var(--accent-primary);
-    border-radius: 8px;
-    padding: 2rem;
-    max-width: 1200px;
-    width: 100%;
-    position: relative;
-}
-
-.skills-modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--text-light);
-    font-size: 2rem;
-    cursor: pointer;
-    transition: var(--transition);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.skills-modal-close:hover {
-    color: var(--accent-primary);
-    transform: rotate(90deg);
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.skills-grid .skill-icon {
-    opacity: 1;
-}
-
-.skills-track {
-    display: flex;
-    gap: 2rem;
-    animation: scroll 30s linear infinite;
-    width: fit-content;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.skills-track:hover {
-    animation-play-state: paused;
-}
-
-.skill-icon {
+.skills-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    min-width: 150px;
-    background: var(--bg-dark-secondary);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
+    max-width: 1020px;
+}
+
+.skill-group {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(30, 58, 95, 0.55);
+}
+
+.skill-group:last-child {
+    border-bottom: none;
+}
+
+.skill-group-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light-secondary);
+}
+
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.6rem;
+}
+
+.skill-item {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-light-secondary);
     transition: var(--transition);
-    opacity: 0.9;
 }
 
-.skill-icon:hover {
-    opacity: 1;
-    transform: translateY(-10px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
-}
-
-.skill-icon img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-}
-
-.skill-icon p {
-    font-size: 0.875rem;
+/* Primary = the stack you'd defend in an interview */
+.skill-item.primary {
+    color: var(--accent-primary);
     font-weight: 600;
-    color: var(--text-light);
 }
 
 /* Timeline for Experience */
@@ -742,23 +664,23 @@ body {
     gap: 0.5rem;
 }
 
-.project-overlay a:first-child {
+.project-overlay a.overlay-code-link {
     background: var(--accent-primary);
     color: var(--bg-dark);
 }
 
-.project-overlay a:first-child:hover {
+.project-overlay a.overlay-code-link:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-.project-overlay a:last-child {
+.project-overlay a.overlay-site-link {
     background: transparent;
     border: 2px solid var(--accent-primary);
     color: var(--accent-primary);
 }
 
-.project-overlay a:last-child:hover {
+.project-overlay a.overlay-site-link:hover {
     background: var(--accent-primary);
     color: var(--bg-dark);
     transform: translateY(-2px);
@@ -775,9 +697,34 @@ body {
     margin-bottom: 1rem;
 }
 
+/* The project title is a real button so the detail view is keyboard reachable */
+.project-title-btn {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.project-title-btn:hover,
+.project-title-btn:focus-visible {
+    color: var(--accent-primary);
+}
+
 .project-card p {
     color: var(--text-light-secondary);
     line-height: 1.6;
+}
+
+.project-card p.project-subheader {
+    color: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    margin: -0.75rem 0 1rem;
 }
 
 /* Project Detail Page */
@@ -940,6 +887,14 @@ body {
     margin-bottom: 2rem;
 }
 
+.project-detail-info p.project-detail-subheader {
+    color: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: -0.5rem 0 1.5rem;
+}
+
 .project-detail-links {
     display: flex;
     gap: 1rem;
@@ -977,6 +932,197 @@ body {
     background: var(--accent-primary);
     color: var(--bg-dark);
     transform: translateY(-2px);
+}
+
+/* Project Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+}
+
+.project-tags span {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--accent-primary);
+    background: rgba(100, 255, 218, 0.07);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 999px;
+    padding: 0.2rem 0.65rem;
+    line-height: 1.5;
+}
+
+.project-detail-info .project-tags {
+    margin: -1rem 0 2rem;
+}
+
+/* Project Archive */
+.projects-archive-link {
+    margin-top: 3.5rem;
+    text-align: center;
+}
+
+.projects-archive-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    text-decoration: none;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.projects-archive-link a:hover {
+    border-bottom-color: var(--accent-primary);
+}
+
+/* Archive page */
+.archive-page {
+    padding: 9rem 0 7rem;
+    min-height: 100vh;
+}
+
+.archive-page-header {
+    margin-bottom: 3rem;
+}
+
+.archive-page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.archive-page-header h1 span {
+    color: var(--accent-primary);
+}
+
+.archive-page-header p {
+    color: var(--text-light-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 60ch;
+}
+
+.archive-count {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem !important;
+    margin-top: 1rem;
+}
+
+.archive-nav-link,
+.archive-back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.archive-nav-link:hover,
+.archive-back-link:hover {
+    text-decoration: underline;
+}
+
+.archive-back-link {
+    margin-top: 3.5rem;
+}
+
+.archive-back-link i {
+    margin-right: 0.5rem;
+}
+
+.archive-empty {
+    color: var(--text-light-secondary);
+    padding: 2rem 0;
+}
+
+.archive-head,
+.archive-row {
+    display: grid;
+    grid-template-columns: 80px 2.2fr 1.2fr 2fr 90px;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.archive-head {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light-secondary);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.archive-row {
+    padding: 0.85rem 0;
+    font-size: 0.9rem;
+    color: var(--text-light-secondary);
+    border-bottom: 1px solid rgba(30, 58, 95, 0.55);
+    transition: var(--transition);
+}
+
+.archive-row:hover {
+    background: rgba(100, 255, 218, 0.04);
+}
+
+.archive-year {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+}
+
+/* Extra breathing room where a new year block begins */
+.archive-row.group-start {
+    padding-top: 1.6rem;
+}
+
+.archive-title {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.archive-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.archive-title a:hover {
+    color: var(--accent-primary);
+}
+
+.archive-built-with {
+    font-size: 0.85rem;
+}
+
+.archive-link a {
+    color: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.archive-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .archive-head {
+        display: none;
+    }
+
+    .archive-row {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+        padding: 1rem 0;
+    }
 }
 
 /* Certification Cards */
@@ -1182,15 +1328,11 @@ body {
         justify-content: center;
     }
 
-    /* Skills modal responsive */
-    .skills-modal-content {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 1rem;
+    /* Skills */
+    .skill-group {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        padding: 1.25rem 0;
     }
 }
 
@@ -1203,18 +1345,8 @@ body {
         padding: 0 1rem;
     }
 
-    .skills-track {
-        gap: 1rem;
-    }
-
-    .skill-icon {
-        min-width: 120px;
-        padding: 1rem;
-    }
-
-    .skill-icon img {
-        width: 60px;
-        height: 60px;
+    .skill-item {
+        font-size: 0.95rem;
     }
 }
 
